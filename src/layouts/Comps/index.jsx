@@ -1,13 +1,7 @@
-import { useState, useCallback } from 'react';
-import { useSelector } from 'umi';
+import { useCallback, useContext } from 'react';
 import { createFromIconfontCN } from '@ant-design/icons';
-import {
-  isTextComponent,
-  isButtonComponent,
-  isImgComponent,
-  menus,
-} from './menu';
-import classnames from 'classnames';
+import { CanvasContext } from '../../utils/Context';
+import { menus } from './menu';
 import styles from './index.less';
 
 const IconFont = createFromIconfontCN({
@@ -15,9 +9,7 @@ const IconFont = createFromIconfontCN({
 });
 
 export default function Comps(props) {
-  const selectorData = useSelector(({ globalModel }) => ({
-    context: globalModel.context,
-  }));
+  const globalCanvas = useContext(CanvasContext);
 
   // 拖拽
   const handleDragStart = useCallback((e, comp) => {
@@ -32,7 +24,7 @@ export default function Comps(props) {
     e.stopPropagation();
     // TODO: 对img处理
 
-    selectorData.context.addComp(comp);
+    globalCanvas.addComp(comp);
   }, []);
 
   return (

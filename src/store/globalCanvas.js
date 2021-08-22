@@ -23,7 +23,7 @@ class Canvas {
       // iphone5/se 尺寸
       style: {
         width: 320,
-        hieght: 568,
+        height: 568,
         backgroundColor: '#fff',
         backgroundImage: '',
         backgroundPosition: 'center',
@@ -81,8 +81,8 @@ class Canvas {
     // 存在 下一步 的操作
     if (index !== this.canvasIndex && this.canvasChangeHistory[index]) {
       this.canvasIndex = index;
-      const nextCanvsHistory = this.canvasChangeHistory[index];
-      this.canvas = nextCanvsHistory;
+      const nextCanvasHistory = this.canvasChangeHistory[index];
+      this.canvas = nextCanvasHistory;
 
       this.runListeners();
     }
@@ -118,7 +118,7 @@ class Canvas {
   };
 
   // 更新canvas的样式
-  updateCanvsStyle = (data) => {
+  updateCanvasStyle = (data) => {
     console.log('更新canvas的样式', this.canvasChangeHistory);
     const newCanvas = {
       ...this.canvas,
@@ -150,7 +150,7 @@ class Canvas {
   };
 
   // 注册组件实例
-  registerCompEntity = (key, entity) => {
+  registerCompsEntity = (key, entity) => {
     this.compsEntity.set(key, entity);
     return () => {
       this.compsEntity.delete('key');
@@ -329,15 +329,15 @@ class Canvas {
       'updateCanvas',
       'emptyCanvas',
       'getCanvasStyle',
-      'updateCanvsStyle',
+      'updateCanvasStyle',
       'registerStoreChangeComps',
-      'registerCompEntity',
+      'registerCompsEntity',
       'getComp',
       'getComps',
       'setComps',
       'addComp',
       'getSelectedComp',
-      'selectedComp',
+      'setSelectedComp',
       'updateSelectedCompStyle',
       'updateSelectedCompValue',
       'deleteSelectedComp',

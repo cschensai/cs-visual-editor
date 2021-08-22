@@ -1,17 +1,15 @@
-import { useLayoutEffect, useEffect } from 'react';
-import { useDispatch } from 'umi';
+import { useLayoutEffect } from 'react';
 import Comps from '../layouts/Comps';
 import Content from '../layouts/Content';
 import Editor from '../layouts/Editor';
 
 import { useCanvas } from '../store/globalCanvas';
+import { CanvasContext } from '../utils/Context';
 import { useForceUpdate } from '../utils';
 
 import styles from './index.less';
 
 export default function IndexPage() {
-  const dispatch = useDispatch();
-
   // 所有组件
   const globalCanvas = useCanvas();
 
@@ -26,21 +24,13 @@ export default function IndexPage() {
     };
   }, [globalCanvas, forceUpdate]);
 
-  // global model
-  useEffect(() => {
-    dispatch({
-      type: 'globalModel/updateState',
-      payload: {
-        context: globalCanvas,
-      },
-    });
-  }, []);
-
   return (
-    <div className={styles.mainBox}>
-      <Comps />
-      <Content />
-      <Editor />
+    <div id="app" className={styles.main}>
+      <CanvasContext.Provider value={globalCanvas}>
+        <Comps />
+        <Content />
+        <Editor />
+      </CanvasContext.Provider>
     </div>
   );
 }
