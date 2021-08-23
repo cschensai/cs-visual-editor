@@ -6,7 +6,7 @@ export default function ImgComponent(data) {
   return (
     <img
       className={styles.main}
-      style={formatStyle(style)}
+      style={formatStyle(style, false)}
       src={value}
       alt="imgComponent"
     />

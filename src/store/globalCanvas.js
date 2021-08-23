@@ -119,7 +119,7 @@ class Canvas {
 
   // 更新canvas的样式
   updateCanvasStyle = (data) => {
-    console.log('更新canvas的样式', this.canvasChangeHistory);
+    // console.log('更新canvas的样式', this.canvasChangeHistory);
     const newCanvas = {
       ...this.canvas,
       style: {

@@ -1,13 +1,9 @@
 // 画布组件
-import TextComponent from '../../../components/TextComponent';
-import ButtonComponent from '../../../components/ButtonComponent';
-import ImgComponent from '../../../components/ImgComponent';
+import TextComponent from '../components/TextComponent';
+import ButtonComponent from '../components/ButtonComponent';
+import ImgComponent from '../components/ImgComponent';
 
-import {
-  isTextComponent,
-  isButtonComponent,
-  isImgComponent,
-} from '../../Comps/menu';
+import { isTextComponent, isButtonComponent, isImgComponent } from './index';
 
 export const getMapComponent = (comp) => {
   const { data } = comp;

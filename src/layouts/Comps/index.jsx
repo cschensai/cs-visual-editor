@@ -1,12 +1,8 @@
 import { useCallback, useContext } from 'react';
-import { createFromIconfontCN } from '@ant-design/icons';
 import { CanvasContext } from '../../utils/Context';
 import { menus } from './menu';
+import IconFont from '../../utils/Iconfont';
 import styles from './index.less';
-
-const IconFont = createFromIconfontCN({
-  scriptUrl: '//at.alicdn.com/t/font_2749648_q5js6t9u3hk.js',
-});
 
 export default function Comps(props) {
   const globalCanvas = useContext(CanvasContext);

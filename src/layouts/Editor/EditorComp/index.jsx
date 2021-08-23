@@ -9,7 +9,7 @@ const { Option } = Select;
 
 export default function EditorComp(props) {
   const { selectedComp, globalCanvas } = props;
-  const { data, desc } = selectedComp;
+  const { data, desc, onlyKey } = selectedComp;
   const { style, type, value: dataValue } = data;
 
   const handleValuesChange = (changedValues) => {
@@ -34,6 +34,7 @@ export default function EditorComp(props) {
       <div className={styles.title}>{desc}</div>
       {/* 表单区域 */}
       <Form
+        key={onlyKey}
         {...FORM_ITEM_LAYOUT}
         onValuesChange={handleValuesChange}
         initialValues={{

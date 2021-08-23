@@ -47,3 +47,10 @@ export const formatStyle = (style, noDel) => {
 export function isNotEqualUndefined(value) {
   return value !== undefined;
 }
+
+// 文本组件
+export const isTextComponent = 0;
+// 按钮组件
+export const isButtonComponent = 1;
+// 图片组件
+export const isImgComponent = 2;

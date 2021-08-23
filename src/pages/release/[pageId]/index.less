@@ -1,0 +1,16 @@
+.main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 100px 320px 0 100px;
+  min-height: 100vh;
+  background-color: #f0f3f7;
+  .canvas {
+    position: relative;
+    .comp {
+      position: absolute;
+      text-align: initial !important; // 这是为了覆盖Draggable组件的textAlign属性
+      box-sizing: content-box;
+    }
+  }
+}

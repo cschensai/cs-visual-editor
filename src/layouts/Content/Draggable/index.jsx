@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { debounce } from 'lodash';
 import classnames from 'classnames';
 import { formatStyle } from '../../../utils';
-import { getMapComponent } from './mapComponent';
+import { getMapComponent } from '../../../utils/mapComponent';
 import { CanvasContext } from '../../../utils/Context';
 import styles from './index.less';
 

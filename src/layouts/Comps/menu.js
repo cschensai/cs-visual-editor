@@ -1,9 +1,8 @@
-// 文本组件
-const isTextComponent = 0;
-// 按钮组件
-const isButtonComponent = 1;
-// 图片组件
-const isImgComponent = 2;
+import {
+  isTextComponent,
+  isButtonComponent,
+  isImgComponent,
+} from '../../utils';
 
 const menus = [
   {
@@ -75,4 +74,4 @@ const menus = [
   },
 ];
 
-export { isTextComponent, isButtonComponent, isImgComponent, menus };
+export { menus };
