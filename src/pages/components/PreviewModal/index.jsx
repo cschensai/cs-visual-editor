@@ -23,7 +23,7 @@ export default function PreviewModal(props) {
     setVisible(false);
     setData({});
   }, []);
-  console.log(111, data);
+
   return (
     <Modal
       wrapClassName={styles.previwModal}

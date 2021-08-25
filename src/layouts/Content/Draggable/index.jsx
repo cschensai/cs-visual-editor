@@ -1,6 +1,7 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { debounce } from 'lodash';
 import classnames from 'classnames';
+import ControlPoints from './ControlPoints';
 import { formatStyle } from '../../../utils';
 import { getMapComponent } from '../../../utils/mapComponent';
 import { CanvasContext } from '../../../utils/Context';
@@ -75,30 +76,28 @@ class Draggable extends Component {
 
     // 标示被选中
     const selected = selectComp && selectComp.onlyKey === comp.onlyKey;
-
     const { style } = comp.data;
-    // const {width, height, top, left} = style;
-    // const gapTop = top - 4;
-    // const gapLeft = left - 4;
-
     return (
-      <div
-        id={`comp${comp.onlyKey}`}
-        className={classnames({
-          [styles.main]: true,
-          [styles.selected]: selected,
-          [styles.unSelected]: !selected,
-        })}
-        style={{
-          ...formatStyle(style, true),
-          zIndex: index,
-        }}
-        draggable
-        onDragStart={this.handleDragStart}
-        onClick={this.setActive}
-      >
-        {getMapComponent(comp)}
-      </div>
+      <Fragment>
+        <div
+          id={`comp${comp.onlyKey}`}
+          className={classnames({
+            [styles.main]: true,
+            [styles.selected]: selected,
+            [styles.unSelected]: !selected,
+          })}
+          style={{
+            ...formatStyle(style, true),
+            zIndex: index,
+          }}
+          draggable
+          onDragStart={this.handleDragStart}
+          onClick={this.setActive}
+        >
+          {getMapComponent(comp)}
+        </div>
+        {selected && <ControlPoints comp={comp} />}
+      </Fragment>
     );
   }
 }

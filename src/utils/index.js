@@ -54,3 +54,12 @@ export const isTextComponent = 0;
 export const isButtonComponent = 1;
 // 图片组件
 export const isImgComponent = 2;
+
+// 防抖，闭包处理
+export const debounce = (func, wait = 500) => {
+  let timer;
+  return () => {
+    if (timer) clearTimeout(timer);
+    else timer = setTimeout(func, wait);
+  };
+};
