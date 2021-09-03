@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import classnames from 'classnames';
-import { debounce } from '../../../../utils';
+import { debounce, formatStyle } from '../../../../utils';
 import { POINTS } from '../../../../utils/constant';
 import IconFont from '../../../../utils/Iconfont';
 import { CanvasContext } from '../../../../utils/Context';
@@ -112,17 +112,20 @@ export default class ControlPoints extends Component {
     return (
       <div
         className={styles.controlPoints}
-        style={{ transform: `rotate${style.transform}` }}
+        style={{
+          transform: style.transform,
+          width,
+          height,
+          left: gapLeft + 2,
+          top: gapTop + 2,
+        }}
       >
         <IconFont
           type="icon-fontxuanzhuan"
-          className={classnames({
-            [styles['icon-xuanzhuan']]: true,
-            [styles.rotate]: true,
-          })}
+          className={styles.rotate}
           style={{
-            left: gapLeft + width / 2,
-            top: gapTop - 20,
+            left: -2 + width / 2,
+            top: -22,
           }}
           onMouseDown={this.handleMouseDownRotate}
         />
@@ -134,8 +137,8 @@ export default class ControlPoints extends Component {
               style={item.styleFunc({
                 width,
                 height,
-                left: gapLeft,
-                top: gapTop,
+                left: -2,
+                top: -2,
               })}
               onMouseDown={(e) => this.handleMounseDown(e, item.dirction)}
             />

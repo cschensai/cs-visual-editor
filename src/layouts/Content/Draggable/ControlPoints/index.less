@@ -1,18 +1,22 @@
+.common() {
+  z-index: 9999;
+  position: absolute;
+  user-select: none;
+}
 .controlPoints {
   position: absolute;
+  pointer-events: none;
   .rotate {
-    z-index: 9999;
-    position: absolute;
     color: #1890ff;
-    user-select: none;
+    pointer-events: visible;
+    .common();
   }
   .point {
-    z-index: 9999;
-    position: absolute;
     width: 6px;
     height: 6px;
-    background-color: #1890ff;
     border-radius: 100%;
-    user-select: none;
+    background-color: #1890ff;
+    pointer-events: visible;
+    .common();
   }
 }
