@@ -55,7 +55,6 @@ class Draggable extends Component {
 
   handleDragStart = (e) => {
     this.setActive(e);
-
     const { pageX, pageY } = e;
     e.dataTransfer.setData('startPos', JSON.stringify({ pageX, pageY }));
   };
@@ -68,7 +67,7 @@ class Draggable extends Component {
 
   render() {
     const { showContextMenu } = this.state;
-    const { index } = this.props;
+    const { index, showAssistLine } = this.props;
 
     const comp = this.context.getComp(index);
     const canvasStyle = this.context.getCanvasStyle();
@@ -97,9 +96,9 @@ class Draggable extends Component {
           onClick={this.setActive}
         >
           {getMapComponent(comp)}
+          {/* { selected && <Dragline comp={comp} canvasStyle={canvasStyle}  /> } */}
         </div>
         {selected && <ControlPoints comp={comp} />}
-        <Dragline comp={comp} canvasWidth={canvasStyle.width} />
       </Fragment>
     );
   }

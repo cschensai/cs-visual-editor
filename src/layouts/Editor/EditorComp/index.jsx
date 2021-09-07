@@ -34,6 +34,7 @@ export default function EditorComp(props) {
       <div className={styles.title}>{desc}</div>
       {/* 表单区域 */}
       <Form
+        className={styles.formBox}
         key={onlyKey}
         {...FORM_ITEM_LAYOUT}
         onValuesChange={handleValuesChange}

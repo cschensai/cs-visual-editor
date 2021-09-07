@@ -3,7 +3,7 @@
   top: 0;
   left: 0;
   width: 100px;
-  min-height: 100%;
+  height: 100%;
   background-color: #fff;
   font-size: 12px;
   .compTop {
@@ -18,10 +18,11 @@
     background-color: #000;
   }
   .compList {
+    height: calc(100% - 60px);
+    overflow-y: auto;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-around;
     color: gray;
     .comp {
       background-color: #fff;

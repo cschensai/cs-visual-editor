@@ -1,10 +1,20 @@
 .dragline {
-  position: absolute;
+  // position: absolute;
+  z-index: 9999;
   pointer-events: none;
-  .pointLine {
+  .pointLineHorizon {
+    position: absolute;
+    border-top: 1px dashed #1890ff;
+    border-right: none;
+    border-bottom: none;
+    border-left: none;
+  }
+  .pointLineVertical {
     position: absolute;
     border: 1px dashed #1890ff;
     border-top: none;
-    border-left: none;
+    border-right: none;
+    border-bottom: none;
+    border-left: 1px dashed #1890ff;
   }
 }
