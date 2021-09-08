@@ -1,13 +1,26 @@
 import { useCallback, useContext, useRef } from 'react';
+import { message } from 'antd';
 import { uniqueId } from 'lodash';
+import IconFont from '@/pages/components/Iconfont';
 import PreviewModal from '../../pages/components/PreviewModal';
-import IconFont from '../../utils/Iconfont';
 import { CanvasContext } from '../../utils/Context';
+import { HEADER_OPERRATIONS } from '../../utils/constant';
 import styles from './index.less';
 
 function Header(props) {
   const previewModalRef = useRef();
   const globalCanvas = useContext(CanvasContext);
+
+  // 上一步
+  const handlePrevStep = useCallback(() => {}, []);
+
+  // 下一步
+  const handleNextStep = useCallback(() => {}, []);
+
+  // 清空画布
+  const handleCleanCanvas = useCallback(() => {
+    globalCanvas.emptyCanvas();
+  }, []);
 
   // 预览
   const handlePreview = useCallback(() => {
@@ -16,6 +29,7 @@ function Header(props) {
 
   // 发布操作
   const handleRelease = useCallback(() => {
+    message.success('模拟发布成功');
     console.log('发布', globalCanvas.getCanvasData());
 
     localStorage.setItem(
@@ -25,16 +39,53 @@ function Header(props) {
       }),
     );
   }, []);
+
+  // 操作菜单
+  const handleOperation = useCallback(
+    (key) => {
+      switch (key) {
+        case 'icon-fontshangyibu':
+          handlePrevStep();
+          break;
+        case 'icon-fontxiayibu':
+          handleNextStep();
+          break;
+        case 'icon-fontqingkong':
+          handleCleanCanvas();
+          break;
+        case 'icon-fontyulan':
+          handlePreview();
+          break;
+        case 'icon-fontfabu':
+          handleRelease();
+          break;
+        default:
+          break;
+      }
+    },
+    [
+      handlePrevStep,
+      handleNextStep,
+      handleCleanCanvas,
+      handlePreview,
+      handleRelease,
+    ],
+  );
+
   return (
     <div className={styles.main}>
-      <div className={styles.preview} onClick={handlePreview}>
-        <IconFont className={styles.compIcon} type="icon-fontyulan" />
-        预览
-      </div>
-      <div className={styles.release} onClick={handleRelease}>
-        <IconFont className={styles.compIcon} type="icon-fontfabu" />
-        发布
-      </div>
+      {HEADER_OPERRATIONS.map((item) => {
+        return (
+          <div
+            key={item.key}
+            className={styles.operation}
+            onClick={() => handleOperation(item.key)}
+          >
+            <IconFont className={styles.compIcon} type={item.key} />
+            {item.label}
+          </div>
+        );
+      })}
       <PreviewModal previewModalRef={previewModalRef} />
     </div>
   );

@@ -1,7 +1,7 @@
 import { useCallback, useContext } from 'react';
+import IconFont from '@/pages/components/Iconfont';
 import { CanvasContext } from '../../utils/Context';
 import { menus } from './menu';
-import IconFont from '../../utils/Iconfont';
 import styles from './index.less';
 
 export default function Comps(props) {

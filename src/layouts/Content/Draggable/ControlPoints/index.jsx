@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
+import IconFont from '@/pages/components/Iconfont';
 import { debounce } from '../../../../utils';
 import { POINTS } from '../../../../utils/constant';
-import IconFont from '../../../../utils/Iconfont';
 import { CanvasContext } from '../../../../utils/Context';
 import styles from './index.less';
 

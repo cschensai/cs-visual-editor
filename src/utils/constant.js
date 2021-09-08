@@ -52,4 +52,28 @@ const POINTS = [
   },
 ];
 
-export { FORM_ITEM_LAYOUT, POINTS };
+// header 顶部操作区域
+const HEADER_OPERRATIONS = [
+  {
+    key: 'icon-fontshangyibu',
+    label: '上一步',
+  },
+  {
+    key: 'icon-fontxiayibu',
+    label: '下一步',
+  },
+  {
+    key: 'icon-fontqingkong',
+    label: '清空画布',
+  },
+  {
+    key: 'icon-fontyulan',
+    label: '预览',
+  },
+  {
+    key: 'icon-fontfabu',
+    label: '发布',
+  },
+];
+
+export { FORM_ITEM_LAYOUT, POINTS, HEADER_OPERRATIONS };
