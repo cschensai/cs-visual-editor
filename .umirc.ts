@@ -9,4 +9,6 @@ export default defineConfig({
     { path: '/release/:pageId', component: '@/pages/release/[pageId]' },
   ],
   fastRefresh: {},
+  mfsu: {},
+  webpack5: {},
 });

@@ -45,22 +45,10 @@ export default function IndexPage() {
       console.log(e.guides);
     });
 
-    // let scrollX = 0;
-    // let scrollY = 0;
     window.addEventListener('resize', () => {
       guidesHorizontal.resize();
       guidesVertical.resize();
     });
-
-    // window.addEventListener("wheel", e => {
-    //     scrollX += e.deltaX;
-    //     scrollY += e.deltaY;
-
-    //     guidesHorizontal.scrollGuides(scrollY);
-    //     guidesHorizontal.scroll(scrollX);
-    //     guidesVertical.scrollGuides(scrollY);
-    //     guidesVertical.scroll(scrollX);
-    // });
   }, []);
 
   return (

@@ -12,13 +12,18 @@ function Header(props) {
   const globalCanvas = useContext(CanvasContext);
 
   // 上一步
-  const handlePrevStep = useCallback(() => {}, []);
+  const handlePrevStep = useCallback(() => {
+    globalCanvas.getPrevCanvasHistory();
+  }, []);
 
   // 下一步
-  const handleNextStep = useCallback(() => {}, []);
+  const handleNextStep = useCallback(() => {
+    globalCanvas.getNextCanvasHistory();
+  }, []);
 
   // 清空画布
   const handleCleanCanvas = useCallback(() => {
+    message.success('清空画布成功');
     globalCanvas.emptyCanvas();
   }, []);
 

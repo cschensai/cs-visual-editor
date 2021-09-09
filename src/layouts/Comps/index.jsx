@@ -25,7 +25,7 @@ export default function Comps(props) {
 
   return (
     <div id="comps" className={styles.main}>
-      <div className={styles.compTop}>测试</div>
+      <div className={styles.compTop}>TEST</div>
       <div className={styles.compList}>
         {menus.map((item) => {
           return (

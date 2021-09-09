@@ -14,8 +14,6 @@ export default function Content(props) {
 
   // 画布所处的位置
   const [canvasPostion, setCanvasPostion] = useState({});
-  // 是否显示辅助线
-  const [showAssistLine, setShowAssistLine] = useState(false);
   // 画布实例
   const canvasRef = useRef();
 
@@ -44,7 +42,6 @@ export default function Content(props) {
   const handleDragEnter = useCallback((e) => {
     e.preventDefault();
     e.stopPropagation();
-    setShowAssistLine(true);
   }, []);
   const handleDragOver = useCallback((e) => {
     e.preventDefault();
@@ -107,11 +104,7 @@ export default function Content(props) {
       >
         {comps.map((comp, index) => {
           return comp.data ? (
-            <Draggable
-              key={comp.onlyKey}
-              index={index}
-              showAssistLine={showAssistLine}
-            />
+            <Draggable key={comp.onlyKey} index={index} />
           ) : null;
         })}
       </div>

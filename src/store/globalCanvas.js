@@ -92,6 +92,7 @@ class Canvas {
   recordCanvasChangeHistory = () => {
     this.canvasChangeHistory.push(this.canvas);
     this.canvasIndex = this.canvasChangeHistory.length - 1;
+    console.log(111, this.canvasChangeHistory, this.canvasIndex);
   };
 
   // get canvasStyle 获取canvas样式属性
@@ -119,7 +120,7 @@ class Canvas {
 
   // 更新canvas的样式
   updateCanvasStyle = (data) => {
-    // console.log('更新canvas的样式', this.canvasChangeHistory);
+    console.log('更新canvas的样式', this.canvasChangeHistory);
     const newCanvas = {
       ...this.canvas,
       style: {
@@ -129,7 +130,7 @@ class Canvas {
     };
 
     // 如果样式相同，则不更新canvas的样式
-    if (JSON.stringify(this.newCanvas) === JSON.stringify(this.canvas)) {
+    if (JSON.stringify(newCanvas) === JSON.stringify(this.canvas)) {
       return false;
     }
 

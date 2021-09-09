@@ -1,8 +1,7 @@
 import React, { Component, Fragment } from 'react';
-import { debounce } from 'lodash';
 import classnames from 'classnames';
 import ControlPoints from './ControlPoints';
-import Dragline from './Dragline';
+// import Dragline from './Dragline';
 import { formatStyle } from '../../../utils';
 import { getMapComponent } from '../../../utils/mapComponent';
 import { CanvasContext } from '../../../utils/Context';
@@ -67,10 +66,10 @@ class Draggable extends Component {
 
   render() {
     const { showContextMenu } = this.state;
-    const { index, showAssistLine } = this.props;
+    const { index } = this.props;
 
     const comp = this.context.getComp(index);
-    const canvasStyle = this.context.getCanvasStyle();
+    // const canvasStyle = this.context.getCanvasStyle();
 
     // 获取当前选中的组件
     const selectComp = this.context.getSelectedComp();
