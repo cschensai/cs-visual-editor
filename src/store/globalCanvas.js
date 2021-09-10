@@ -92,7 +92,6 @@ class Canvas {
   recordCanvasChangeHistory = () => {
     this.canvasChangeHistory.push(this.canvas);
     this.canvasIndex = this.canvasChangeHistory.length - 1;
-    console.log(111, this.canvasChangeHistory, this.canvasIndex);
   };
 
   // get canvasStyle 获取canvas样式属性
@@ -120,7 +119,7 @@ class Canvas {
 
   // 更新canvas的样式
   updateCanvasStyle = (data) => {
-    console.log('更新canvas的样式', this.canvasChangeHistory);
+    // console.log('更新canvas的样式', this.canvasChangeHistory);
     const newCanvas = {
       ...this.canvas,
       style: {
@@ -287,14 +286,14 @@ class Canvas {
   // 点击组件、右侧删除组件
   deleteSelectedComp = (_comp) => {
     // 设置选中的组件为null
-    this.selectedComp(null);
+    this.setSelectedComp(null);
 
     const comps = this.getComps();
     // 过滤到当前要删除的组件
     this.updateComps(comps.filter((comp) => comp.onlyKey !== _comp.onlyKey));
   };
 
-  // 交换i、j位置的元素，置顶置底
+  // 交换i、j位置的元素，置顶/置底
   changeCompIndex = (i, j = this.getComps().length - 1) => {
     if (i === j) {
       return false;

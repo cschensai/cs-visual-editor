@@ -2,9 +2,10 @@ import React, { Component, Fragment } from 'react';
 import classnames from 'classnames';
 import ControlPoints from './ControlPoints';
 // import Dragline from './Dragline';
-import { formatStyle } from '../../../utils';
-import { getMapComponent } from '../../../utils/mapComponent';
-import { CanvasContext } from '../../../utils/Context';
+import ContextMenu from './ContextMenu';
+import { formatStyle } from '@/utils';
+import { getMapComponent } from '@/utils/mapComponent';
+import { CanvasContext } from '@/utils/Context';
 import styles from './index.less';
 
 // setSelectedComp: 设置选中的组件
@@ -48,7 +49,6 @@ class Draggable extends Component {
   setShowContextMenu = (e) => {
     e.preventDefault();
     e.stopPropagation();
-
     this.setState({ showContextMenu: false });
   };
 
@@ -62,6 +62,13 @@ class Draggable extends Component {
     e.stopPropagation();
     const comp = this.context.getComp(this.props.index);
     this.context.setSelectedComp(comp);
+  };
+
+  // 右键快捷操作
+  handleContextMenu = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    this.setState({ showContextMenu: true });
   };
 
   render() {
@@ -93,11 +100,19 @@ class Draggable extends Component {
           draggable
           onDragStart={this.handleDragStart}
           onClick={this.setActive}
+          onContextMenu={this.handleContextMenu}
         >
           {getMapComponent(comp)}
           {/* { selected && <Dragline comp={comp} canvasStyle={canvasStyle}  /> } */}
         </div>
         {selected && <ControlPoints comp={comp} />}
+        {showContextMenu && (
+          <ContextMenu
+            index={index}
+            pos={{ top: style.top - 80, left: style.left + 60 }}
+            comp={comp}
+          />
+        )}
       </Fragment>
     );
   }

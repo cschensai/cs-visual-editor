@@ -76,4 +76,23 @@ const HEADER_OPERRATIONS = [
   },
 ];
 
-export { FORM_ITEM_LAYOUT, POINTS, HEADER_OPERRATIONS };
+const CONTEXT_MENUS = [
+  {
+    key: 'copy',
+    label: '复制',
+  },
+  {
+    key: 'delete',
+    label: '删除',
+  },
+  {
+    key: 'top',
+    label: '置顶',
+  },
+  {
+    key: 'bottom',
+    label: '置底',
+  },
+];
+
+export { FORM_ITEM_LAYOUT, POINTS, HEADER_OPERRATIONS, CONTEXT_MENUS };
