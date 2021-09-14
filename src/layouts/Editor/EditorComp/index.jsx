@@ -1,9 +1,12 @@
+import { useCallback } from 'react';
 import { Form, Input, InputNumber, Select } from 'antd';
 import InputColor from 'react-input-color';
 import { isNotEqualUndefined } from '../../../utils';
 import { FORM_ITEM_LAYOUT } from '../../../utils/constant';
+import editorCompSchema from '../jsonSchema/editorCompSchema';
 import styles from './index.less';
 
+const requireds = editorCompSchema.required;
 const { Item: FormItem } = Form;
 const { Option } = Select;
 
@@ -29,6 +32,35 @@ export default function EditorComp(props) {
     globalCanvas.updateSelectedCompStyle(changedValues);
   };
 
+  const renderComponent = useCallback((item) => {
+    if (item.type === 'string') {
+      return <Input placeholder="请输入" />;
+    }
+    if (item.type === 'number') {
+      return (
+        <InputNumber
+          style={{ width: '100%' }}
+          placeholder="请输入"
+          min={item.minimum}
+        />
+      );
+    }
+    if (item.type === 'color') {
+      return (
+        <InputColor style={{ width: '100%' }} initialValue={style[item.$id]} />
+      );
+    }
+    if (item.type === 'array') {
+      return (
+        <Select style={{ width: '100%' }}>
+          {item?.examples.map((ele) => (
+            <Option key={ele}>{ele}</Option>
+          ))}
+        </Select>
+      );
+    }
+  }, []);
+
   return (
     <div id="editorComp" className={styles.editorComp}>
       <div className={styles.title}>{desc}</div>
@@ -44,11 +76,15 @@ export default function EditorComp(props) {
         }}
       >
         {isNotEqualUndefined(dataValue) && (
-          <FormItem name="value" label={type === 2 ? '图片地址' : '描述'}>
+          <FormItem
+            name="value"
+            label={type === 2 ? '图片地址' : '描述'}
+            rules={[{ required: true, message: '该字段不能为空' }]}
+          >
             <Input placeholder="请输入" />
           </FormItem>
         )}
-        {isNotEqualUndefined(style.fontSize) && (
+        {/*{isNotEqualUndefined(style.fontSize) && (
           <FormItem name="fontSize" label="字体大小">
             <InputNumber style={{ width: '100%' }} placeholder="请输入" />
           </FormItem>
@@ -119,7 +155,24 @@ export default function EditorComp(props) {
               <Option key="solid">solid</Option>
             </Select>
           </FormItem>
-        )}
+        )} */}
+        {Object.keys(editorCompSchema.properties).map((key) => {
+          const item = editorCompSchema.properties[key];
+          const isRequired = requireds.includes(item.$id);
+          if (isNotEqualUndefined(style[item.$id])) {
+            return (
+              <FormItem
+                key={item.$id}
+                label={item.title}
+                name={item.$id}
+                rules={[{ required: isRequired, message: '该字段不能为空' }]}
+              >
+                {renderComponent(item)}
+              </FormItem>
+            );
+          }
+          return null;
+        })}
       </Form>
     </div>
   );

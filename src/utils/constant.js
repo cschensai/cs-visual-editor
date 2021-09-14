@@ -1,6 +1,6 @@
 const FORM_ITEM_LAYOUT = {
   labelCol: {
-    span: 6,
+    span: 7,
   },
   wrapperCol: {
     span: 16,

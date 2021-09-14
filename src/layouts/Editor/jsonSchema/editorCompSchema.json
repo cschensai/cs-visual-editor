@@ -1,0 +1,143 @@
+{
+  "$id": "hcompSchema",
+  "type": "object",
+  "title": "组件属性",
+  "description": "组件的样式属性",
+  "default": {},
+  "examples": [
+    {
+      "fontSize": 0,
+      "color": "",
+      "fontWeight": ["normal", "bold", "lighter"],
+      "backgroundColor": "",
+      "lineHeight": 0,
+      "textAlign": ["left", "center", "right"],
+      "borderRadius": 0,
+      "borderWidth": 0,
+      "borderStyle": [
+        "none",
+        "dashed",
+        "dotted",
+        "double",
+        "groove",
+        "hidden",
+        "solid"
+      ]
+    }
+  ],
+  "required": ["fontSize", "lineHeight", "borderRadius", "borderWidth"],
+  "properties": {
+    "fontSize": {
+      "$id": "fontSize",
+      "type": "number",
+      "title": "字体大小",
+      "description": "字体的大小",
+      "minimum": 0
+    },
+    "color": {
+      "$id": "color",
+      "type": "color",
+      "title": "字体颜色",
+      "description": "字体的颜色"
+    },
+    "fontWeight": {
+      "$id": "fontWeight",
+      "type": "array",
+      "title": "字体粗细",
+      "description": "字体的粗细",
+      "additionalItems": true,
+      "examples": ["normal", "bold", "lighter"],
+      "items": {
+        "$id": "items",
+        "anyOf": [
+          {
+            "$id": "itemAny",
+            "type": "string",
+            "title": "The first anyOf schema",
+            "description": "An explanation about the purpose of this instance."
+          }
+        ]
+      }
+    },
+    "backgroundColor": {
+      "$id": "backgroundColor",
+      "type": "color",
+      "title": "背景颜色",
+      "description": "背景颜色"
+    },
+    "lineHeight": {
+      "$id": "lineHeight",
+      "type": "number",
+      "title": "行高",
+      "description": "行高",
+      "minimum": 0
+    },
+    "textAlign": {
+      "$id": "textAlign",
+      "type": "array",
+      "title": "对齐方式",
+      "description": "对齐方式",
+      "examples": ["left", "center", "right"],
+      "additionalItems": true,
+      "items": {
+        "$id": "items",
+        "anyOf": [
+          {
+            "$id": "itemAny",
+            "type": "string",
+            "title": "The first anyOf schema",
+            "description": "An explanation about the purpose of this instance."
+          }
+        ]
+      }
+    },
+    "borderRadius": {
+      "$id": "borderRadius",
+      "type": "number",
+      "title": "圆角",
+      "description": "圆角",
+      "minimum": 0
+    },
+    "borderWidth": {
+      "$id": "borderWidth",
+      "type": "number",
+      "title": "边框宽度",
+      "description": "边框宽度",
+      "minimum": 0
+    },
+    "borderColor": {
+      "$id": "borderColor",
+      "type": "color",
+      "title": "边框颜色",
+      "description": "边框颜色"
+    },
+    "borderStyle": {
+      "$id": "borderStyle",
+      "type": "array",
+      "title": "边框样式",
+      "description": "边框样式",
+      "examples": [
+        "none",
+        "dashed",
+        "dotted",
+        "double",
+        "groove",
+        "hidden",
+        "solid"
+      ],
+      "additionalItems": true,
+      "items": {
+        "$id": "items",
+        "anyOf": [
+          {
+            "$id": "itemAny",
+            "type": "string",
+            "title": "The first anyOf schema",
+            "description": "An explanation about the purpose of this instance."
+          }
+        ]
+      }
+    }
+  },
+  "additionalProperties": true
+}

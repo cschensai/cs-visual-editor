@@ -1,6 +1,4 @@
 import { useState, useRef, useEffect, useCallback, useContext } from 'react';
-import Ruler from '@scena/ruler';
-import classnames from 'classnames';
 
 import Header from '../Header';
 import Draggable from './Draggable';

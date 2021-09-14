@@ -1,0 +1,45 @@
+{
+  "$id": "canvasSchema",
+  "type": "object",
+  "title": "画布属性",
+  "description": "canvas的画布属性",
+  "default": {},
+  "examples": [
+    {
+      "width": 320,
+      "height": 568,
+      "backgroundColor": "#fff",
+      "backgroundImage": ""
+    }
+  ],
+  "required": ["width", "height", "backgroundColor"],
+  "properties": {
+    "width": {
+      "$id": "width",
+      "type": "number",
+      "title": "画布宽度",
+      "description": "画布的宽度",
+      "minimum": 0
+    },
+    "height": {
+      "$id": "height",
+      "type": "number",
+      "title": "画布高度",
+      "description": "画布的高度",
+      "minimum": 0
+    },
+    "backgroundColor": {
+      "$id": "backgroundColor",
+      "type": "color",
+      "title": "背景颜色",
+      "description": "画布的背景颜色"
+    },
+    "backgroundImage": {
+      "$id": "backgroundImage",
+      "type": "string",
+      "title": "背景图片",
+      "description": "背景图片地址"
+    }
+  },
+  "additionalProperties": true
+}

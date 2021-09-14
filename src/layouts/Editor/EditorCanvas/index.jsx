@@ -1,9 +1,12 @@
+import { useCallback } from 'react';
 import { Form, InputNumber, Input } from 'antd';
 import InputColor from 'react-input-color';
 import { isNotEqualUndefined } from '../../../utils';
 import { FORM_ITEM_LAYOUT } from '../../../utils/constant';
+import editorCanvasSchema from '../jsonSchema/editorCanvasSchema';
 import styles from './index.less';
 
+const requireds = editorCanvasSchema.required;
 const { Item: FormItem } = Form;
 
 export default function EditorCanvas(props) {
@@ -19,6 +22,26 @@ export default function EditorCanvas(props) {
     globalCanvas.updateCanvasStyle(changedValues);
   };
 
+  const renderComponent = useCallback((item) => {
+    if (item.type === 'number') {
+      return (
+        <InputNumber
+          style={{ width: '100%' }}
+          placeholder="请输入"
+          min={item.minimum}
+        />
+      );
+    }
+    if (item.type === 'color') {
+      return (
+        <InputColor style={{ width: '100%' }} initialValue={style[item.$id]} />
+      );
+    }
+    if (item.type === 'string') {
+      return <Input placeholder="请输入" />;
+    }
+  }, []);
+
   return (
     <div className={styles.editorCanvas}>
       <div className={styles.title}>画布属性</div>
@@ -28,7 +51,7 @@ export default function EditorCanvas(props) {
         onValuesChange={handleValuesChange}
         initialValues={style}
       >
-        {isNotEqualUndefined(style.width) && (
+        {/* {isNotEqualUndefined(style.width) && (
           <FormItem label="画布宽度" name="width">
             <InputNumber style={{ width: '100%' }} placeholder="请输入" />
           </FormItem>
@@ -47,10 +70,27 @@ export default function EditorCanvas(props) {
           </FormItem>
         )}
         {isNotEqualUndefined(style.backgroundImage) && (
-          <FormItem label="背景颜色" name="backgroundImage">
+          <FormItem label="背景图片" name="backgroundImage">
             <Input placeholder="请输入" />
           </FormItem>
-        )}
+        )} */}
+        {Object.keys(editorCanvasSchema.properties).map((key) => {
+          const item = editorCanvasSchema.properties[key];
+          const isRequired = requireds.includes(item.$id);
+          if (isNotEqualUndefined(style[item.$id])) {
+            return (
+              <FormItem
+                key={item.$id}
+                label={item.title}
+                name={item.$id}
+                rules={[{ required: isRequired, message: '该字段不能为空' }]}
+              >
+                {renderComponent(item)}
+              </FormItem>
+            );
+          }
+          return null;
+        })}
       </Form>
     </div>
   );
