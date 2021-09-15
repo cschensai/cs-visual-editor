@@ -1,7 +1,7 @@
 import { useCallback, useContext } from 'react';
 import IconFont from '@/pages/components/Iconfont';
 import { CanvasContext } from '../../utils/Context';
-import { menus } from './menu';
+import { baseMenus, businessMenus } from './menu';
 import styles from './index.less';
 
 export default function Comps(props) {
@@ -27,7 +27,24 @@ export default function Comps(props) {
     <div id="comps" className={styles.main}>
       <div className={styles.compTop}>TEST</div>
       <div className={styles.compList}>
-        {menus.map((item) => {
+        <div className={styles.componentTitle}>基础组件</div>
+        {baseMenus.map((item) => {
+          return (
+            <div
+              key={item.desc}
+              className={styles.comp}
+              // TODO: img组件的处理
+              draggable
+              onDragStart={(e) => handleDragStart(e, item)}
+              onClick={(e) => handleClick(e, item)}
+            >
+              <IconFont className={styles.compIcon} type={item.data.iconfont} />
+              <span className={styles.compText}>{item.desc}</span>
+            </div>
+          );
+        })}
+        <div className={styles.componentTitle}>业务组件</div>
+        {businessMenus.map((item) => {
           return (
             <div
               key={item.desc}

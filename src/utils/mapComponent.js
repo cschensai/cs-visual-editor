@@ -2,8 +2,14 @@
 import TextComponent from '../components/TextComponent';
 import ButtonComponent from '../components/ButtonComponent';
 import ImgComponent from '../components/ImgComponent';
+import ListComponent from '../components/ListComponent';
 
-import { isTextComponent, isButtonComponent, isImgComponent } from './index';
+import {
+  isTextComponent,
+  isButtonComponent,
+  isImgComponent,
+  isListComponent,
+} from './index';
 
 export const getMapComponent = (comp) => {
   const { data } = comp;
@@ -14,6 +20,8 @@ export const getMapComponent = (comp) => {
       return <ButtonComponent {...data} />;
     case isImgComponent:
       return <ImgComponent {...data} />;
+    case isListComponent:
+      return <ListComponent {...data} />;
     default:
       break;
   }

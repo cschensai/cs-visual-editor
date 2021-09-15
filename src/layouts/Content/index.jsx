@@ -20,9 +20,18 @@ export default function Content(props) {
   // 获取画布所有组件
   const comps = globalCanvas.getComps();
 
+  // 取消选中的组件
   const cancelSelect = (e) => {
     if (
-      ['app', 'root', 'content', 'canvas', 'editorComp'].includes(e.target.id)
+      [
+        'app',
+        'root',
+        'header',
+        'operationIcon',
+        'content',
+        'canvas',
+        'editorComp',
+      ].includes(e.target.id)
     ) {
       globalCanvas.setSelectedComp(null);
     }

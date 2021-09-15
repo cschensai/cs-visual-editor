@@ -54,6 +54,8 @@ export const isTextComponent = 0;
 export const isButtonComponent = 1;
 // 图片组件
 export const isImgComponent = 2;
+// 列表组件
+export const isListComponent = 3;
 
 // 防抖，闭包处理
 export const debounce = (func, wait = 500) => {

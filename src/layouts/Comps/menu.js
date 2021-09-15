@@ -2,9 +2,10 @@ import {
   isTextComponent,
   isButtonComponent,
   isImgComponent,
+  isListComponent,
 } from '../../utils';
 
-const menus = [
+const baseMenus = [
   {
     desc: '文本',
     data: {
@@ -73,5 +74,21 @@ const menus = [
     },
   },
 ];
-
-export { menus };
+const businessMenus = [
+  {
+    desc: '列表组件',
+    data: {
+      type: isListComponent,
+      iconfont: 'icon-fontliebiao',
+      requestUrl:
+        'https://www.fastmock.site/mock/3b83adfdb4747ac5f286e201f1410110/visual/img/list',
+      style: {
+        top: 0,
+        left: 0,
+        width: 200,
+        height: 100,
+      },
+    },
+  },
+];
+export { baseMenus, businessMenus };

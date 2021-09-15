@@ -13,7 +13,7 @@ const { Option } = Select;
 export default function EditorComp(props) {
   const { selectedComp, globalCanvas } = props;
   const { data, desc, onlyKey } = selectedComp;
-  const { style, type, value: dataValue } = data;
+  const { style, type, value: dataValue, requestUrl } = data;
 
   const handleValuesChange = (changedValues) => {
     // 处理描述字段
@@ -25,41 +25,47 @@ export default function EditorComp(props) {
     // 处理颜色字段，取十六进制值
     const nameKeys = Object.keys(changedValues);
     const nameKey = nameKeys[0];
-    if (nameKey.toLowerCase().includes('color')) {
+    if (nameKey?.toLowerCase()?.includes('color')) {
       const hexColor = changedValues[nameKey].hex;
       changedValues[nameKey] = hexColor;
     }
     globalCanvas.updateSelectedCompStyle(changedValues);
   };
 
-  const renderComponent = useCallback((item) => {
-    if (item.type === 'string') {
-      return <Input placeholder="请输入" />;
-    }
-    if (item.type === 'number') {
-      return (
-        <InputNumber
-          style={{ width: '100%' }}
-          placeholder="请输入"
-          min={item.minimum}
-        />
-      );
-    }
-    if (item.type === 'color') {
-      return (
-        <InputColor style={{ width: '100%' }} initialValue={style[item.$id]} />
-      );
-    }
-    if (item.type === 'array') {
-      return (
-        <Select style={{ width: '100%' }}>
-          {item?.examples.map((ele) => (
-            <Option key={ele}>{ele}</Option>
-          ))}
-        </Select>
-      );
-    }
-  }, []);
+  const renderComponent = useCallback(
+    (item) => {
+      if (item.type === 'string') {
+        return <Input placeholder="请输入" />;
+      }
+      if (item.type === 'number') {
+        return (
+          <InputNumber
+            style={{ width: '100%' }}
+            placeholder="请输入"
+            min={item.minimum}
+          />
+        );
+      }
+      if (item.type === 'color') {
+        return (
+          <InputColor
+            style={{ width: '100%' }}
+            initialValue={style[item.$id]}
+          />
+        );
+      }
+      if (item.type === 'array') {
+        return (
+          <Select style={{ width: '100%' }}>
+            {item?.examples.map((ele) => (
+              <Option key={ele}>{ele}</Option>
+            ))}
+          </Select>
+        );
+      }
+    },
+    [selectedComp],
+  );
 
   return (
     <div id="editorComp" className={styles.editorComp}>
@@ -72,6 +78,7 @@ export default function EditorComp(props) {
         onValuesChange={handleValuesChange}
         initialValues={{
           value: dataValue,
+          requestUrl,
           ...style,
         }}
       >
@@ -79,6 +86,15 @@ export default function EditorComp(props) {
           <FormItem
             name="value"
             label={type === 2 ? '图片地址' : '描述'}
+            rules={[{ required: true, message: '该字段不能为空' }]}
+          >
+            <Input placeholder="请输入" />
+          </FormItem>
+        )}
+        {isNotEqualUndefined(requestUrl) && (
+          <FormItem
+            name="requestUrl"
+            label="请求地址"
             rules={[{ required: true, message: '该字段不能为空' }]}
           >
             <Input placeholder="请输入" />

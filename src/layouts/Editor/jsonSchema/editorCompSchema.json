@@ -94,8 +94,8 @@
     "borderRadius": {
       "$id": "borderRadius",
       "type": "number",
-      "title": "圆角",
-      "description": "圆角",
+      "title": "边框圆角",
+      "description": "边框圆角",
       "minimum": 0
     },
     "borderWidth": {

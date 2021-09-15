@@ -78,13 +78,14 @@ function Header(props) {
   );
 
   return (
-    <div className={styles.main}>
+    <div className={styles.main} id="header">
       {HEADER_OPERRATIONS.map((item) => {
         return (
           <div
             key={item.key}
             className={styles.operation}
             onClick={() => handleOperation(item.key)}
+            id="operationIcon"
           >
             <IconFont className={styles.compIcon} type={item.key} />
             {item.label}
