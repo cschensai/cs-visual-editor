@@ -1,4 +1,4 @@
-import { useCallback } from 'react';
+import { useCallback, useMemo } from 'react';
 import { Form, Input, InputNumber, Select } from 'antd';
 import InputColor from 'react-input-color';
 import { isNotEqualUndefined } from '../../../utils';
@@ -32,6 +32,7 @@ export default function EditorComp(props) {
     globalCanvas.updateSelectedCompStyle(changedValues);
   };
 
+  // 根据组件style字段 展示不同的控件
   const renderComponent = useCallback(
     (item) => {
       if (item.type === 'string') {
@@ -67,6 +68,13 @@ export default function EditorComp(props) {
     [selectedComp],
   );
 
+  //
+  const formLabel = useMemo(() => {
+    if (type === 2) return '图片地址';
+    if (type === 3) return '请求地址';
+    return '描述';
+  }, [selectedComp]);
+
   return (
     <div id="editorComp" className={styles.editorComp}>
       <div className={styles.title}>{desc}</div>
@@ -85,16 +93,7 @@ export default function EditorComp(props) {
         {isNotEqualUndefined(dataValue) && (
           <FormItem
             name="value"
-            label={type === 2 ? '图片地址' : '描述'}
-            rules={[{ required: true, message: '该字段不能为空' }]}
-          >
-            <Input placeholder="请输入" />
-          </FormItem>
-        )}
-        {isNotEqualUndefined(requestUrl) && (
-          <FormItem
-            name="requestUrl"
-            label="请求地址"
+            label={formLabel}
             rules={[{ required: true, message: '该字段不能为空' }]}
           >
             <Input placeholder="请输入" />

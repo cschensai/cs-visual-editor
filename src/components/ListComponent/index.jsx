@@ -3,9 +3,9 @@ import { formatStyle } from '../../utils';
 import styles from './index.less';
 
 export default function ListComponent(data) {
+  const { style, value: requestUrl } = data;
   const [compList, setCompList] = useState([]);
 
-  const { style, requestUrl } = data;
   const getData = async () => {
     const res = await fetch(requestUrl);
     const resJson = await res.json();
@@ -17,7 +17,7 @@ export default function ListComponent(data) {
   };
   useEffect(() => {
     getData();
-  }, [data]);
+  }, [data.value]);
 
   return (
     <div className={styles.main} style={formatStyle(style, false)}>

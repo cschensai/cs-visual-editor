@@ -80,7 +80,7 @@ const businessMenus = [
     data: {
       type: isListComponent,
       iconfont: 'icon-fontliebiao',
-      requestUrl:
+      value:
         'https://www.fastmock.site/mock/3b83adfdb4747ac5f286e201f1410110/visual/img/list',
       style: {
         top: 0,

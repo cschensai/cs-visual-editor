@@ -1,3 +1,4 @@
+@primary-color: #1890ff;
 .main {
   position: absolute;
   top: 0;
@@ -25,15 +26,16 @@
     align-items: center;
     color: gray;
     .componentTitle {
+      margin-top: 10px;
       color: gray;
       height: 40px;
       width: 100%;
       font-size: 18px;
-      font-weight: 500;
+      font-style: italic;
       display: flex;
       justify-content: center;
       align-items: center;
-      border-bottom: 1px solid lightgray;
+      border-left: 3px solid @primary-color;
     }
     .comp {
       background-color: #fff;
@@ -48,18 +50,18 @@
       cursor: pointer;
       &:hover {
         box-sizing: border-box;
-        border-left: 3px solid #1890ff;
+        border-left: 3px solid @primary-color;
       }
       .compIcon {
         font-size: 25px;
         &:hover {
-          color: #1890ff;
+          color: @primary-color;
         }
       }
       .compText {
         color: #666;
         &:hover {
-          color: #1890ff;
+          color: @primary-color;
         }
       }
     }
