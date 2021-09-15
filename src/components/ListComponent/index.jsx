@@ -1,3 +1,9 @@
+/**
+ * 列表1：https://www.fastmock.site/mock/3b83adfdb4747ac5f286e201f1410110/visual/img/list
+ * 列表2：https://www.fastmock.site/mock/3b83adfdb4747ac5f286e201f1410110/visual/update/img/list
+ *
+ */
+
 import { useEffect, useState } from 'react';
 import { formatStyle } from '../../utils';
 import styles from './index.less';
