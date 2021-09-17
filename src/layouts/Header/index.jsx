@@ -1,6 +1,6 @@
 import { useCallback, useContext, useRef } from 'react';
 import { message } from 'antd';
-import { uniqueId } from 'lodash';
+import { uniqueId, cloneDeep } from 'lodash';
 import IconFont from '@/pages/components/Iconfont';
 import PreviewModal from '../../pages/components/PreviewModal';
 import { CanvasContext } from '../../utils/Context';
@@ -36,11 +36,29 @@ function Header(props) {
   const handleRelease = useCallback(() => {
     message.success('模拟发布成功');
     console.log('发布', globalCanvas.getCanvasData());
-
+    // 处理真机预览兼容性问题 按照真机ipone5 dpr: 1 fontSize: 32进行设置处理, base-font-size
+    const baseFontSize = 32;
+    const { style: canvasStyle, comps = [] } = cloneDeep(
+      globalCanvas.getCanvasData(),
+    );
+    canvasStyle.width = `${canvasStyle.width / baseFontSize}rem`;
+    canvasStyle.height = `${canvasStyle.height / baseFontSize}rem`;
+    comps.forEach((comp) => {
+      const { style: compStyle } = comp.data || {};
+      for (const key in compStyle) {
+        if (Object.hasOwnProperty.call(compStyle, key)) {
+          const compAttrVal = compStyle[key];
+          if (typeof compAttrVal === 'number') {
+            compStyle[key] = `${compAttrVal / baseFontSize}rem`;
+          }
+        }
+      }
+    });
+    // 本地存储 模拟 存储数据库 操作
     localStorage.setItem(
       'release',
       JSON.stringify({
-        [uniqueId('release')]: globalCanvas.getCanvasData(),
+        [uniqueId('release')]: { style: canvasStyle, comps },
       }),
     );
   }, []);

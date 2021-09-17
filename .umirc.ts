@@ -8,6 +8,7 @@ export default defineConfig({
     { path: '/', component: '@/pages/index' },
     { path: '/release/:pageId', component: '@/pages/release/[pageId]' },
   ],
+  title: false,
   fastRefresh: {},
   mfsu: {},
   webpack5: {},

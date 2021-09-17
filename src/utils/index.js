@@ -19,7 +19,12 @@ export const useForceUpdate = () => {
 export const checkPx = (newStyle, names) => {
   for (const name of names) {
     const newStyleName = newStyle[name];
-    if (newStyleName && !`${newStyleName}`.includes('px')) {
+    // (!`${newStyleName}`.includes('rem')) 处理真机预览兼容性问题
+    if (
+      newStyleName &&
+      !`${newStyleName}`.includes('rem') &&
+      !`${newStyleName}`.includes('px')
+    ) {
       newStyle[name] = `${newStyleName}px`;
     }
   }
