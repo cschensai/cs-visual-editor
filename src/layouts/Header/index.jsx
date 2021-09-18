@@ -1,8 +1,9 @@
 import { useCallback, useContext, useRef } from 'react';
 import { message } from 'antd';
-import { uniqueId, cloneDeep } from 'lodash';
 import IconFont from '@/pages/components/Iconfont';
 import PreviewModal from '../../pages/components/PreviewModal';
+import { px2Rem } from '../../utils';
+import { request } from '../../utils/request';
 import { CanvasContext } from '../../utils/Context';
 import { HEADER_OPERRATIONS } from '../../utils/constant';
 import styles from './index.less';
@@ -29,38 +30,32 @@ function Header(props) {
 
   // 预览
   const handlePreview = useCallback(() => {
-    previewModalRef.current.show(globalCanvas.getCanvasData());
-  }, []);
-
-  // 发布操作
-  const handleRelease = useCallback(() => {
-    message.success('模拟发布成功');
-    console.log('发布', globalCanvas.getCanvasData());
-    // 处理真机预览兼容性问题 按照真机ipone5 dpr: 1 fontSize: 32进行设置处理, base-font-size
-    const baseFontSize = 32;
-    const { style: canvasStyle, comps = [] } = cloneDeep(
-      globalCanvas.getCanvasData(),
-    );
-    canvasStyle.width = `${canvasStyle.width / baseFontSize}rem`;
-    canvasStyle.height = `${canvasStyle.height / baseFontSize}rem`;
-    comps.forEach((comp) => {
-      const { style: compStyle } = comp.data || {};
-      for (const key in compStyle) {
-        if (Object.hasOwnProperty.call(compStyle, key)) {
-          const compAttrVal = compStyle[key];
-          if (typeof compAttrVal === 'number') {
-            compStyle[key] = `${compAttrVal / baseFontSize}rem`;
-          }
-        }
-      }
-    });
     // 本地存储 模拟 存储数据库 操作
     localStorage.setItem(
       'release',
-      JSON.stringify({
-        [uniqueId('release')]: { style: canvasStyle, comps },
-      }),
+      JSON.stringify(px2Rem(globalCanvas.getCanvasData())),
     );
+
+    // 跳转预览页面
+    window.open('/preview');
+  }, []);
+
+  // 发布操作
+  const handleRelease = useCallback(async () => {
+    console.log('发布', globalCanvas.getCanvasData());
+    try {
+      const data = await request({
+        method: 'POST',
+        url: '/add',
+        data: {
+          name: '我的落地页',
+          content: JSON.stringify(px2Rem(globalCanvas.getCanvasData())),
+        },
+      });
+      message.success('发布成功');
+    } catch (error) {
+      console.log('error', error);
+    }
   }, []);
 
   // 操作菜单

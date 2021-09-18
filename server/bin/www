@@ -1,0 +1,31 @@
+#!/usr/bin/env node
+
+const app = require('../app');
+
+// port
+const port = normalizePort(process.env.PORT || '3000');
+
+app.listen(port, () => {
+  console.log(`${app.env} listening on ${port}`);
+});
+
+app.on('error', (err, ctx) => {
+  console.error('server error', err, ctx)
+});
+
+// 对port端口进行校验
+function normalizePort(val) {
+  var port = parseInt(val, 10);
+
+  if (isNaN(port)) {
+    // named pipe
+    return val;
+  }
+
+  if (port >= 0) {
+    // port number
+    return port;
+  }
+
+  return false;
+}

@@ -9,5 +9,11 @@
     position: relative;
     border: 1px solid #ddd;
     box-shadow: 1px 1px 20px #ccc;
+    overflow-x: hidden;
+    overflow-y: auto;
+    &::-webkit-scrollbar {
+      display: none;
+    }
+    -ms-overflow-style: none;
   }
 }

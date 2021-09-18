@@ -28,7 +28,7 @@ export default function ListComponent(data) {
   return (
     <div className={styles.main} style={formatStyle(style, false)}>
       {compList.map((comp) => (
-        <p key={comp.id}>ListComponent</p>
+        <img key={comp.id} src={comp.url} alt="img" className={styles.img} />
       ))}
     </div>
   );

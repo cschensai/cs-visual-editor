@@ -1,4 +1,5 @@
 import { useState, useCallback } from 'react';
+import { cloneDeep } from 'lodash';
 
 // 获取唯一的key
 export const getOnlyKey = () => {
@@ -20,6 +21,7 @@ export const checkPx = (newStyle, names) => {
   for (const name of names) {
     const newStyleName = newStyle[name];
     // (!`${newStyleName}`.includes('rem')) 处理真机预览兼容性问题
+    console.log(111, newStyleName);
     if (
       newStyleName &&
       !`${newStyleName}`.includes('rem') &&
@@ -69,4 +71,27 @@ export const debounce = (func, wait = 500) => {
     if (timer) clearTimeout(timer);
     else timer = setTimeout(func, wait);
   };
+};
+
+// 手动处理 px2rem
+export const px2Rem = (getCanvasData) => {
+  if (getCanvasData) {
+    // 处理真机预览兼容性问题 按照真机ipone5 dpr: 1 fontSize: 32px 进行设置处理, base-font-size
+    const baseFontSize = 32;
+    const { style: canvasStyle, comps = [] } = cloneDeep(getCanvasData);
+    canvasStyle.width = `${canvasStyle.width / baseFontSize}rem`;
+    canvasStyle.height = `${canvasStyle.height / baseFontSize}rem`;
+    comps.forEach((comp) => {
+      const { style: compStyle } = comp.data || {};
+      for (const key in compStyle) {
+        if (Object.hasOwnProperty.call(compStyle, key)) {
+          const compAttrVal = compStyle[key];
+          if (typeof compAttrVal === 'number') {
+            compStyle[key] = `${compAttrVal / baseFontSize}rem`;
+          }
+        }
+      }
+    });
+    return { style: canvasStyle, comps };
+  }
 };
