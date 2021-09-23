@@ -1,4 +1,4 @@
-const base_url = 'http://localhost:3000/cs-visual-editor';
+const base_url = 'http://localhost:3000/visual-editor';
 
 async function request({ method = 'GET', data = {}, url = '' }) {
   const requestUrl = `${base_url}${url}`;
@@ -22,9 +22,9 @@ async function request({ method = 'GET', data = {}, url = '' }) {
     const res = await fetch(requestUrl, params);
     // parses response to json
     const result = await res.json();
-    const { code, data: resData } = result || {};
+    const { code } = result || {};
     if (code === 0) {
-      return resData;
+      return result;
     } else {
       Promise.reject(result);
     }

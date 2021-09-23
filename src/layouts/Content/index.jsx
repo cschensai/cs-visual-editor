@@ -98,12 +98,12 @@ export default function Content(props) {
       <Header />
       <div
         className={styles.canvas}
-        id="canvas"
         style={{
           ...formatStyle(canvasStyle),
           backgroundImage: `url(${canvasStyle?.backgroundImage})`,
         }}
         ref={canvasRef}
+        id="canvas"
         onDragEnter={handleDragEnter}
         onDragOver={handleDragOver}
         onDragLeave={handleDragLeave}

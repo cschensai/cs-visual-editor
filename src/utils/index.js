@@ -20,8 +20,7 @@ export const useForceUpdate = () => {
 export const checkPx = (newStyle, names) => {
   for (const name of names) {
     const newStyleName = newStyle[name];
-    // (!`${newStyleName}`.includes('rem')) 处理真机预览兼容性问题
-    console.log(111, newStyleName);
+    // 处理真机预览兼容性问题
     if (
       newStyleName &&
       !`${newStyleName}`.includes('rem') &&
@@ -55,15 +54,6 @@ export function isNotEqualUndefined(value) {
   return value !== undefined;
 }
 
-// 文本组件
-export const isTextComponent = 0;
-// 按钮组件
-export const isButtonComponent = 1;
-// 图片组件
-export const isImgComponent = 2;
-// 列表组件
-export const isListComponent = 3;
-
 // 防抖，闭包处理
 export const debounce = (func, wait = 500) => {
   let timer;
@@ -95,3 +85,14 @@ export const px2Rem = (getCanvasData) => {
     return { style: canvasStyle, comps };
   }
 };
+
+// 文本组件
+export const isTextComponent = 0;
+// 按钮组件
+export const isButtonComponent = 1;
+// 图片组件
+export const isImgComponent = 2;
+// 列表组件
+export const isListComponent = 3;
+// tabs组件
+export const isTabsComponent = 4;

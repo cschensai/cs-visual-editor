@@ -1,5 +1,5 @@
 // 路由前缀
-const BASE_URL_PREFIX = '/cs-visual-editor';
+const BASE_URL_PREFIX = '/visual-editor';
 // mysql 配置
 const MY_SQL_CONFIG = {
   host: 'localhost',

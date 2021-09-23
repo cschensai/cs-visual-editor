@@ -1,10 +1,10 @@
 import React, { Component, Fragment } from 'react';
 import classnames from 'classnames';
+import DynamicComp from '@/pages/components/DynamicComp';
 import ControlPoints from './ControlPoints';
 // import Dragline from './Dragline';
 import ContextMenu from './ContextMenu';
 import { formatStyle } from '@/utils';
-import { getMapComponent } from '@/utils/mapComponent';
 import { CanvasContext } from '@/utils/Context';
 import styles from './index.less';
 
@@ -102,14 +102,14 @@ class Draggable extends Component {
           onClick={this.setActive}
           onContextMenu={this.handleContextMenu}
         >
-          {getMapComponent(comp)}
+          <DynamicComp comp={comp} />
           {/* { selected && <Dragline comp={comp} canvasStyle={canvasStyle}  /> } */}
         </div>
         {selected && <ControlPoints comp={comp} />}
         {showContextMenu && (
           <ContextMenu
             index={index}
-            pos={{ top: style.top - 80, left: style.left + 60 }}
+            pos={{ top: style.top + 20, left: style.left + 60 }}
             comp={comp}
           />
         )}

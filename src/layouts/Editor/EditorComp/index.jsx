@@ -58,7 +58,7 @@ export default function EditorComp(props) {
       if (item.type === 'array') {
         return (
           <Select style={{ width: '100%' }}>
-            {item?.examples.map((ele) => (
+            {item?.enums.map((ele) => (
               <Option key={ele}>{ele}</Option>
             ))}
           </Select>

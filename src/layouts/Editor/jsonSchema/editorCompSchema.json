@@ -1,5 +1,5 @@
 {
-  "$id": "hcompSchema",
+  "$id": "compSchema",
   "type": "object",
   "title": "组件属性",
   "description": "组件的样式属性",
@@ -46,7 +46,7 @@
       "title": "字体粗细",
       "description": "字体的粗细",
       "additionalItems": true,
-      "examples": ["normal", "bold", "lighter"],
+      "enums": ["normal", "bold", "lighter"],
       "items": {
         "$id": "items",
         "anyOf": [
@@ -77,7 +77,7 @@
       "type": "array",
       "title": "对齐方式",
       "description": "对齐方式",
-      "examples": ["left", "center", "right"],
+      "enums": ["left", "center", "right"],
       "additionalItems": true,
       "items": {
         "$id": "items",
@@ -116,7 +116,7 @@
       "type": "array",
       "title": "边框样式",
       "description": "边框样式",
-      "examples": [
+      "enums": [
         "none",
         "dashed",
         "dotted",

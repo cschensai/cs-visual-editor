@@ -124,7 +124,7 @@ export default class ControlPoints extends Component {
           className={styles.rotate}
           style={{
             left: -6 + width / 2,
-            top: -24,
+            top: -6 + height / 2,
           }}
           onMouseDown={this.handleMouseDownRotate}
         />
@@ -136,8 +136,8 @@ export default class ControlPoints extends Component {
               style={item.styleFunc({
                 width,
                 height,
-                left: -3,
-                top: -3,
+                left: -2,
+                top: -2,
               })}
               onMouseDown={(e) => this.handleMounseDown(e, item.dirction)}
             />

@@ -1,5 +1,5 @@
+import DynamicComp from '../components/DynamicComp';
 import { formatStyle } from '../../utils';
-import { getMapComponent } from '../../utils/mapComponent';
 import styles from './index.less';
 
 export default function RepleasePage(props) {
@@ -25,7 +25,7 @@ export default function RepleasePage(props) {
                 zIndex: index,
               }}
             >
-              {getMapComponent(comp)}
+              <DynamicComp comp={comp} />
             </div>
           );
         })}

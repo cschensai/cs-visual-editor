@@ -21,13 +21,28 @@ const index = require('./routes/index');
 // error handler
 onerror(app);
 
-// middlewares
+// cors middlewares
 app.use(
   cors({
-    origin: 'http://localhost:8000',
-    // 客户端设置了credentials: 'include' 所以不能设置为*
-    // origin: '*',
+    origin: (ctx) => {
+      console.log(111, ctx.url);
+      // 客户端设置了credentials: 'include' 所以不能设置为*
+      if (ctx.url.includes('/visual-editor')) {
+        return 'http://localhost:8001'; // 允许来自所有域名请求
+      }
+      return '*';
+    },
+    exposeHeaders: ['WWW-Authenticate', 'Server-Authorization', 'x-test-code'],
+    maxAge: 5, //  该字段可选，用来指定本次预检请求的有效期，单位为秒
     credentials: true,
+    allowMethods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+    allowHeaders: [
+      'Content-Type',
+      'Authorization',
+      'Accept',
+      'x-requested-with',
+      'Content-Encoding',
+    ],
   }),
 );
 app.use(

@@ -3,9 +3,10 @@ import {
   isButtonComponent,
   isImgComponent,
   isListComponent,
+  isTabsComponent,
 } from '../../utils';
 
-const baseMenus = [
+const baseMenus = (width) => [
   {
     desc: '文本',
     data: {
@@ -15,7 +16,7 @@ const baseMenus = [
       style: {
         top: 1,
         left: 0,
-        width: 80,
+        width,
         height: 30,
         lineHeight: 30,
         fontSize: 12,
@@ -39,7 +40,7 @@ const baseMenus = [
       style: {
         top: 0,
         left: 0,
-        width: 80,
+        width,
         height: 30,
         lineHeight: 30,
         fontSize: 12,
@@ -64,7 +65,7 @@ const baseMenus = [
       style: {
         top: 0,
         left: 0,
-        width: 200,
+        width,
         height: 100,
         borderRadius: 0,
         borderStyle: 'none',
@@ -74,7 +75,7 @@ const baseMenus = [
     },
   },
 ];
-const businessMenus = [
+const businessMenus = (width = 200) => [
   {
     desc: '列表组件',
     data: {
@@ -85,8 +86,22 @@ const businessMenus = [
       style: {
         top: 0,
         left: 0,
-        width: 200,
-        height: 100,
+        width,
+        height: 600,
+      },
+    },
+  },
+  {
+    desc: 'Tabs组件',
+    data: {
+      type: isTabsComponent,
+      iconfont: 'icon-fontm-tabs',
+      value: 'tabs组件',
+      style: {
+        top: 0,
+        left: 0,
+        width,
+        height: 300,
       },
     },
   },

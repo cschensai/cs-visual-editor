@@ -4,7 +4,7 @@
   "title": "画布属性",
   "description": "canvas的画布属性",
   "default": {},
-  "examples": [
+  "enums": [
     {
       "width": 320,
       "height": 568,

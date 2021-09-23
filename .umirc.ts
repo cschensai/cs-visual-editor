@@ -9,10 +9,13 @@ export default defineConfig({
     { path: '/preview', component: '@/pages/preview' },
     { path: '/release/:pageId', component: '@/pages/release/[pageId]' },
   ],
+  base: '/visual-editor',
   title: false,
   dynamicImport: {
     loading: '@/pages/components/EmptyComp',
   },
+  // .babelrc or babel-loader option
+  extraBabelPlugins: [['import', { libraryName: 'zarm', style: 'css' }]],
   fastRefresh: {},
   mfsu: {},
   webpack5: {},

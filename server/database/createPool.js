@@ -1,4 +1,4 @@
-// 单独写一个文件 这样只会查u你更加爱你一个连接池
+// 单独写一个文件 这样只会创建一个连接池
 const mysql = require('mysql');
 const { MY_SQL_CONFIG } = require('../utils/config');
 // 创建连接池

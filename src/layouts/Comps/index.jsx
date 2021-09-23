@@ -28,7 +28,7 @@ export default function Comps(props) {
       <div className={styles.compTop}>TEST</div>
       <div className={styles.compList}>
         <div className={styles.componentTitle}>基础组件</div>
-        {baseMenus.map((item) => {
+        {baseMenus(globalCanvas.getCanvasStyle().width).map((item) => {
           return (
             <div
               key={item.desc}
@@ -44,7 +44,7 @@ export default function Comps(props) {
           );
         })}
         <div className={styles.componentTitle}>业务组件</div>
-        {businessMenus.map((item) => {
+        {businessMenus(globalCanvas.getCanvasStyle().width).map((item) => {
           return (
             <div
               key={item.desc}

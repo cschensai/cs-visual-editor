@@ -18,11 +18,15 @@
 - [x] 组件自由拖拽
 - [x] 8个伸缩点
 - [x] 组件旋转
-- [ ] 组件辅助线
+- [x] 组件辅助线
 - [ ] 组件动画
-- [x] 画布标尺（网格线）
+- [x] 画布标尺
 - [ ] 手机模式
-- [ ] 组件自适应方案
+  - [] 开发时：可供选择机型，确定1rem=?px
+- [x] 组件自适应方案
+  - [x] 手淘方案lib-flexible
+  - [x] 百分比
+  - 第三方组件直接自适配
 - [x] 上一步
 - [x] 下一步
 - [ ] 撤消
@@ -37,17 +41,22 @@
   - [x] 删除
 - [ ] 模版列表
 - [x] 不同组件映射不同属性面板
-  - [ ] JSON.Schema
+  - [x] JSON.Schema
   - [x] css属性
   - [x] 实时预览
 - [x] no code
-- [ ] ajax请求
+- [x] low code
+- [x] 接口API
+- [x] Dynamic Import Component
 
 ### 后端交互
-
+- [x] Cors跨域
+- [x] Koa2
+- [x] Koa-router
+- [x] Nodejs
+- [x] MySql
+  - [x] 写数据库
+  - [x] 读数据库
+- [x] logger
+- [x] 存储页面生成的JSON字符串
 - [ ] ECS
-- [ ] Koa2
-- [ ] Nodejs
-- [ ] Mongoose
-- [ ] logger
-- [ ] 存储页面生成的JSON字符串

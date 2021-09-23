@@ -1,7 +1,6 @@
 import { useCallback, useContext, useRef } from 'react';
 import { message } from 'antd';
 import IconFont from '@/pages/components/Iconfont';
-import PreviewModal from '../../pages/components/PreviewModal';
 import { px2Rem } from '../../utils';
 import { request } from '../../utils/request';
 import { CanvasContext } from '../../utils/Context';
@@ -44,7 +43,7 @@ function Header(props) {
   const handleRelease = useCallback(async () => {
     console.log('发布', globalCanvas.getCanvasData());
     try {
-      const data = await request({
+      const res = await request({
         method: 'POST',
         url: '/add',
         data: {
@@ -52,7 +51,9 @@ function Header(props) {
           content: JSON.stringify(px2Rem(globalCanvas.getCanvasData())),
         },
       });
-      message.success('发布成功');
+      if (res?.code === 0) {
+        message.success('发布成功');
+      }
     } catch (error) {
       console.log('error', error);
     }
@@ -105,7 +106,6 @@ function Header(props) {
           </div>
         );
       })}
-      <PreviewModal previewModalRef={previewModalRef} />
     </div>
   );
 }
