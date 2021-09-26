@@ -7,5 +7,6 @@ const isMobileMode = /Android|webOS|iPhone|iPod|BlackBerry/i.test(
   window.navigator.userAgent,
 );
 if (!isMobileMode) {
+  // iPhone5 1rem=32px
   document.documentElement.style.fontSize = '32px';
 }
