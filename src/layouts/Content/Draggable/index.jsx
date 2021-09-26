@@ -103,9 +103,9 @@ class Draggable extends Component {
           onContextMenu={this.handleContextMenu}
         >
           <DynamicComp comp={comp} />
-          {/* { selected && <Dragline comp={comp} canvasStyle={canvasStyle}  /> } */}
         </div>
-        {selected && <ControlPoints comp={comp} />}
+        {/* { selected && <Dragline comp={comp} canvasStyle={canvasStyle}  /> } */}
+        {selected && <ControlPoints comp={comp} zIndex={index} />}
         {showContextMenu && (
           <ContextMenu
             index={index}

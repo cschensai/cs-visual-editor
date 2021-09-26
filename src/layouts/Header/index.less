@@ -4,24 +4,32 @@
   align-items: center;
   position: absolute;
   top: 0;
-  left: 100px;
+  left: 0;
   right: 0;
   height: 60px;
   z-index: 22;
   color: #fff;
   background-color: #000;
-  .operation {
-    cursor: pointer;
+  .title {
+    width: 140px;
+    text-align: center;
+  }
+  .operationBox {
+    flex: 1;
     display: flex;
+    justify-content: center;
     align-items: center;
-    margin-right: 20px;
-    .compIcon {
-      font-size: 16px;
-      color: white;
-      margin-right: 5px;
-    }
-    &:last-child {
-      margin-right: 0;
+    .operation {
+      cursor: pointer;
+      margin-right: 20px;
+      .compIcon {
+        font-size: 16px;
+        color: white;
+        margin-right: 5px;
+      }
+      &:last-child {
+        margin-right: 0;
+      }
     }
   }
 }

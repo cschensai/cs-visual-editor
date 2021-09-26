@@ -1,4 +1,4 @@
-function sqlQuery(sql, value) {
+function sqlAction(sql, value) {
   return new Promise((resolve, reject) => {
     global.dbPool.getConnection((err, connection) => {
       if (err) {
@@ -14,7 +14,9 @@ function sqlQuery(sql, value) {
         });
       }
     });
+  }).catch((err) => {
+    console.error('sql action error', err);
   });
 }
 
-module.exports = { sqlQuery };
+module.exports = { sqlAction };

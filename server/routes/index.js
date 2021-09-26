@@ -1,6 +1,6 @@
 const Router = require('koa-router');
 const router = new Router();
-const { sqlQuery } = require('../database/sqlQuery');
+const { sqlAction } = require('../database/sqlAction');
 const { errHandler } = require('../utils/utils');
 
 router.post('/add', async (ctx) => {
@@ -8,7 +8,7 @@ router.post('/add', async (ctx) => {
     const { name, content } = ctx.request.body;
     const sql = `INSERT INTO land_page(name, content) VALUES(?, ?)`;
     const value = [name, content];
-    await sqlQuery(sql, value);
+    await sqlAction(sql, value);
     ctx.body = {
       code: 0,
       data: { msg: '发布成功' },
@@ -23,7 +23,7 @@ router.get('/get', async (ctx) => {
     const { pageId } = ctx.request.query;
     const sql = `SELECT * FROM land_page WHERE id=? LIMIT 1`;
     const value = [pageId];
-    const data = await sqlQuery(sql, value);
+    const data = await sqlAction(sql, value);
     ctx.body = {
       code: 0,
       data: data[0],

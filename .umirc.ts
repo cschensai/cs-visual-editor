@@ -14,7 +14,7 @@ export default defineConfig({
   dynamicImport: {
     loading: '@/pages/components/EmptyComp',
   },
-  // .babelrc or babel-loader option
+  // .babelrc or babel-loader option  实现css样式实现按需加载，自动加载css文件
   extraBabelPlugins: [['import', { libraryName: 'zarm', style: 'css' }]],
   fastRefresh: {},
   mfsu: {},

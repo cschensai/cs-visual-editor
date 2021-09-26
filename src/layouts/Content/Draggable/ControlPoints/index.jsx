@@ -102,7 +102,7 @@ export default class ControlPoints extends Component {
   };
 
   render() {
-    const { comp } = this.props;
+    const { comp, zIndex } = this.props;
     const { style } = comp.data;
     const { width, height, top, left } = style;
     const gapWidth = width + 2;
@@ -115,8 +115,9 @@ export default class ControlPoints extends Component {
           transform: style.transform,
           width: gapWidth,
           height: gapHeight,
-          left: left,
-          top: top,
+          left,
+          top,
+          zIndex,
         }}
       >
         <IconFont
@@ -136,8 +137,8 @@ export default class ControlPoints extends Component {
               style={item.styleFunc({
                 width,
                 height,
-                left: -2,
-                top: -2,
+                left: -4,
+                top: -4,
               })}
               onMouseDown={(e) => this.handleMounseDown(e, item.dirction)}
             />

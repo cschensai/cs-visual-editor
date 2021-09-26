@@ -27,6 +27,7 @@ async function request({ method = 'GET', data = {}, url = '' }) {
       return result;
     } else {
       Promise.reject(result);
+      return {};
     }
   } catch (error) {
     console.log('error', error);

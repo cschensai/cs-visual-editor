@@ -10,13 +10,8 @@ const Router = require('koa-router');
 
 // 接口统一前缀
 const { BASE_URL_PREFIX } = require('./utils/config');
-const { errHandler } = require('./utils/utils');
 // 创建数据库连接池 只会创建一次
 require('./database/createPool');
-
-// 路由处理
-const router = new Router();
-const index = require('./routes/index');
 
 // error handler
 onerror(app);
@@ -25,10 +20,9 @@ onerror(app);
 app.use(
   cors({
     origin: (ctx) => {
-      console.log(111, ctx.url);
       // 客户端设置了credentials: 'include' 所以不能设置为*
       if (ctx.url.includes('/visual-editor')) {
-        return 'http://localhost:8001'; // 允许来自所有域名请求
+        return 'http://localhost:8008'; // 允许来自所有域名请求
       }
       return '*';
     },
@@ -67,10 +61,11 @@ try {
   });
 } catch (error) {
   lo4jsLog.error(error);
-  errHandler(ctx, error);
 }
 
 // routes
+// 路由处理
+const router = new Router();
 router.use(BASE_URL_PREFIX, require('./routes/index'));
 app.use(router.routes()).use(router.allowedMethods());
 

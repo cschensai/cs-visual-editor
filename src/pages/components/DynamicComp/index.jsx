@@ -49,15 +49,14 @@ const getMapComponent = (data) => {
       }
       return () => <Component {...data} />;
     },
-    loading: () => <div style={{ textAlign: 'center' }}>操作中...</div>,
+    loading: () => <div style={{ textAlign: 'center' }}>loading...</div>,
   });
 };
 
 const DynamicComp = memo((props) => {
   const { comp } = props;
-  const Dynamic = useMemo(() => {
-    return getMapComponent(comp.data);
-  }, [comp?.data]);
+  const currComp = getMapComponent(comp?.data);
+  const Dynamic = useMemo(() => currComp, [comp?.data]);
   return <Dynamic />;
 });
 

@@ -93,19 +93,22 @@ function Header(props) {
 
   return (
     <div className={styles.main} id="header">
-      {HEADER_OPERRATIONS.map((item) => {
-        return (
-          <div
-            key={item.key}
-            className={styles.operation}
-            onClick={() => handleOperation(item.key)}
-            id="operationIcon"
-          >
-            <IconFont className={styles.compIcon} type={item.key} />
-            {item.label}
-          </div>
-        );
-      })}
+      <div className={styles.title}>VISUAL-EDITOR</div>
+      <div className={styles.operationBox}>
+        {HEADER_OPERRATIONS.map((item) => {
+          return (
+            <div
+              key={item.key}
+              className={styles.operation}
+              onClick={() => handleOperation(item.key)}
+              id="operationIcon"
+            >
+              <IconFont className={styles.compIcon} type={item.key} />
+              {item.label}
+            </div>
+          );
+        })}
+      </div>
     </div>
   );
 }

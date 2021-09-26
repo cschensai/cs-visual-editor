@@ -25,7 +25,6 @@ export default function Comps(props) {
 
   return (
     <div id="comps" className={styles.main}>
-      <div className={styles.compTop}>TEST</div>
       <div className={styles.compList}>
         <div className={styles.componentTitle}>基础组件</div>
         {baseMenus(globalCanvas.getCanvasStyle().width).map((item) => {

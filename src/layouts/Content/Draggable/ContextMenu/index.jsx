@@ -1,4 +1,5 @@
 import React, { useContext, useCallback } from 'react';
+import { cloneDeep } from 'lodash';
 import { CanvasContext } from '@/utils/Context';
 import { CONTEXT_MENUS } from '@/utils/constant';
 
@@ -10,7 +11,9 @@ export default function ContextMenu({ index, pos, comp }) {
   const handleClick = useCallback((key) => {
     switch (key) {
       case 'copy':
-        globalCanvas.addComp(comp);
+        const cloneComp = cloneDeep(comp);
+        cloneComp.data.style.top = cloneComp.data.style.top + 10;
+        globalCanvas.addComp(cloneComp);
         break;
       case 'delete':
         globalCanvas.deleteSelectedComp(comp);

@@ -59,8 +59,11 @@ const baseMenus = (width) => [
     desc: '图片',
     data: {
       type: isImgComponent,
+      // https://img.tusij.com/ips_asset/16/11/10/44/54/ab/ab06c00c974c83828a1ec4efb5bca2bf.png!l800_i_w?auth_key=1639324800-0-0-65182ed5f3ed55503bbfb02fb65b4663
+      // https://img.tusij.com/ips_asset/16/11/10/44/54/09/09917bf7e35711c91d353fd7aebf2a38.png!l800_i_w?auth_key=1639324800-0-0-bd838424e74c24b3f0787ae4c4fb11d6
+      // https://img.tusij.com/ips_asset/16/11/10/44/54/ae/aefd66a218248c11f5652ef1a6e64b19.png!l800_i_w?auth_key=1639324800-0-0-2a91660153714f43bf6087c3c800f17b
       value:
-        'https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=1333208373,3297678241&fm=26&gp=0.jpg',
+        'https://img.tusij.com/ips_asset/16/11/10/44/53/5a/5aac2e49feeb917d0071a29126964010.png!l800_i_w?auth_key=1639324800-0-0-fa311768fea7460b62100c4e6366a2e4',
       iconfont: 'icon-fontimage',
       style: {
         top: 0,
