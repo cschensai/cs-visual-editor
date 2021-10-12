@@ -13,8 +13,8 @@ export default function RepleasePage(props) {
     });
     const { code, data = {} } = res;
     if (code === 0) {
-      const { name, content } = data;
-      document.title = name;
+      const { title, content } = data;
+      document.title = title;
       setCanvas(JSON.parse(content));
     }
   }, []);

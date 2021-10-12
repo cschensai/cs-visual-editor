@@ -1,4 +1,4 @@
-const base_url = 'http://localhost:3000/visual-editor';
+const base_url = 'http://localhost:8002/visual-editor';
 
 async function request({ method = 'GET', data = {}, url = '' }) {
   const requestUrl = `${base_url}${url}`;

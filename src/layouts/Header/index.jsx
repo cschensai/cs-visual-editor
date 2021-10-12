@@ -47,7 +47,7 @@ function Header(props) {
         method: 'POST',
         url: '/add',
         data: {
-          name: '我的落地页',
+          title: '我的落地页',
           content: JSON.stringify(px2Rem(globalCanvas.getCanvasData())),
         },
       });
