@@ -6,8 +6,8 @@
   "default": {},
   "enums": [
     {
-      "width": 320,
-      "height": 568,
+      "width": 375,
+      "height": 667,
       "backgroundColor": "#fff",
       "backgroundImage": ""
     }

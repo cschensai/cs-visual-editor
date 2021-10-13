@@ -20,10 +20,10 @@ class Canvas {
     this.compsEntity = new Map(); // 实例
     // 画布默认设置
     this.defaultCanvas = {
-      // iphone5/se 尺寸
+      // iphone6 尺寸
       style: {
-        width: 320,
-        height: 568,
+        width: 375,
+        height: 667,
         backgroundColor: '#fff',
         backgroundImage: '',
         backgroundPosition: 'center',

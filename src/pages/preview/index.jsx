@@ -3,7 +3,6 @@ import { formatStyle } from '../../utils';
 import styles from './index.less';
 
 export default function RepleasePage(props) {
-  const { pageId } = props.match.params;
   const dataSource = JSON.parse(localStorage.getItem('release'));
   const { style: canvasStyle, comps } = dataSource;
   return (

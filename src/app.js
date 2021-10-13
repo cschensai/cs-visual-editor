@@ -24,8 +24,8 @@ function adjustMode() {
         'target-densitydpi=device-dpi, width=480px, user-scalable=no'),
       head.length > 0 && head[head.length - 1].appendChild(viewport));
   } else {
-    // pc模式，按照iPhone5尺寸适配
-    document.documentElement.style.fontSize = '32px';
+    // pc模式，按照iPhone6 尺寸适配
+    document.documentElement.style.fontSize = '37.5px';
   }
 }
 adjustMode();

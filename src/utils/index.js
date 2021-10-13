@@ -66,8 +66,8 @@ export const debounce = (func, wait = 500) => {
 // 手动处理 px2rem
 export const px2Rem = (getCanvasData) => {
   if (getCanvasData) {
-    // 处理真机预览兼容性问题 按照真机ipone5 dpr: 1 fontSize: 32px 进行设置处理, base-font-size
-    const baseFontSize = 32;
+    // 处理真机预览兼容性问题 按照真机ipone6 dpr: 1 fontSize: 37.5px 进行设置处理, base-font-size
+    const baseFontSize = 37.5;
     const { style: canvasStyle, comps = [] } = cloneDeep(getCanvasData);
     canvasStyle.width = `${canvasStyle.width / baseFontSize}rem`;
     canvasStyle.height = `${canvasStyle.height / baseFontSize}rem`;
