@@ -12,8 +12,32 @@
       "backgroundImage": ""
     }
   ],
-  "required": ["width", "height", "backgroundColor"],
+  "required": ["mode", "width", "height", "backgroundColor"],
   "properties": {
+    "mode": {
+      "$id": "mode",
+      "type": "array",
+      "title": "开发模式",
+      "description": "开发的设备模式",
+      "enums": [
+        "iPhone 5/SE",
+        "iPhone 6/7/8",
+        "iPhone 6/7/8 Plus",
+        "iPhone X",
+        "iPad"
+      ],
+      "items": {
+        "$id": "items",
+        "anyOf": [
+          {
+            "$id": "itemAny",
+            "type": "string",
+            "title": "The first anyOf schema",
+            "description": "An explanation about the purpose of this instance."
+          }
+        ]
+      }
+    },
     "width": {
       "$id": "width",
       "type": "number",

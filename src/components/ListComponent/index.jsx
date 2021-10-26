@@ -4,7 +4,7 @@
  *
  */
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { formatStyle } from '../../utils';
 import styles from './index.less';
 

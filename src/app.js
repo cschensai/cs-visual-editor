@@ -1,5 +1,9 @@
-// 适配
+// 适配不同尺寸屏幕
 import 'lib-flexible';
+// csss3 animation
+import 'animate.css';
+// app.less
+import './app.less';
 
 // zarm 组件定制主题
 document.documentElement.style.setProperty('--theme-primary', '#1890ff');

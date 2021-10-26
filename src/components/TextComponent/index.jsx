@@ -1,10 +1,16 @@
+import classnames from 'classnames';
 import { formatStyle } from '../../utils';
 import styles from './index.less';
 
 export default function TextComponent(data) {
-  const { style, value } = data;
+  const { style, value, animationClsName } = data;
+  const cls = classnames({
+    [styles.main]: true,
+    animate__animated: true,
+    [animationClsName]: animationClsName !== 'none',
+  });
   return (
-    <div className={styles.main} style={formatStyle(style, false)}>
+    <div className={cls} style={formatStyle(style, false)}>
       {value}
     </div>
   );

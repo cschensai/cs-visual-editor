@@ -1,16 +1,18 @@
 import { useCallback } from 'react';
-import { Form, InputNumber, Input } from 'antd';
+import { Form, InputNumber, Input, Select } from 'antd';
 import InputColor from 'react-input-color';
 import { isNotEqualUndefined } from '../../../utils';
-import { FORM_ITEM_LAYOUT } from '../../../utils/constant';
+import { DEVICE_MAP, FORM_ITEM_LAYOUT } from '../../../utils/constant';
 import editorCanvasSchema from '../jsonSchema/editorCanvasSchema';
 import styles from './index.less';
 
 const requireds = editorCanvasSchema.required;
 const { Item: FormItem } = Form;
+const { Option } = Select;
 
 export default function EditorCanvas(props) {
   const { globalCanvas } = props;
+  const [form] = Form.useForm();
   const style = globalCanvas.getCanvasStyle();
 
   const handleValuesChange = (changedValues) => {
@@ -19,10 +21,26 @@ export default function EditorCanvas(props) {
       const hexColor = changedValues.backgroundColor.hex;
       changedValues.backgroundColor = hexColor;
     }
+    if ('mode' in changedValues) {
+      const modeVal = changedValues.mode;
+      const { width, height } = DEVICE_MAP[modeVal] || {};
+      changedValues.width = width;
+      changedValues.height = height;
+      form.setFieldsValue({ width, height });
+    }
     globalCanvas.updateCanvasStyle(changedValues);
   };
 
   const renderComponent = useCallback((item) => {
+    if (item.type === 'array') {
+      return (
+        <Select style={{ width: '100%' }}>
+          {item?.enums.map((ele) => (
+            <Option key={ele}>{ele}</Option>
+          ))}
+        </Select>
+      );
+    }
     if (item.type === 'number') {
       return (
         <InputNumber
@@ -46,34 +64,12 @@ export default function EditorCanvas(props) {
     <div className={styles.editorCanvas}>
       <div className={styles.title}>画布属性</div>
       <Form
+        form={form}
         className={styles.formBox}
         {...FORM_ITEM_LAYOUT}
         onValuesChange={handleValuesChange}
         initialValues={style}
       >
-        {/* {isNotEqualUndefined(style.width) && (
-          <FormItem label="画布宽度" name="width">
-            <InputNumber style={{ width: '100%' }} placeholder="请输入" />
-          </FormItem>
-        )}
-        {isNotEqualUndefined(style.height) && (
-          <FormItem label="画布高度" name="height">
-            <InputNumber style={{ width: '100%' }} placeholder="请输入" />
-          </FormItem>
-        )}
-        {isNotEqualUndefined(style.backgroundColor) && (
-          <FormItem label="背景颜色" name="backgroundColor">
-            <InputColor
-              style={{ width: '100%' }}
-              initialValue={style.backgroundColor}
-            />
-          </FormItem>
-        )}
-        {isNotEqualUndefined(style.backgroundImage) && (
-          <FormItem label="背景图片" name="backgroundImage">
-            <Input placeholder="请输入" />
-          </FormItem>
-        )} */}
         {Object.keys(editorCanvasSchema.properties).map((key) => {
           const item = editorCanvasSchema.properties[key];
           const isRequired = requireds.includes(item.$id);

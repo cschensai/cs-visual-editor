@@ -72,7 +72,7 @@ const HEADER_OPERRATIONS = [
   },
   {
     key: 'icon-fontfabu',
-    label: '发布',
+    label: '保存',
   },
 ];
 
@@ -95,4 +95,38 @@ const CONTEXT_MENUS = [
   },
 ];
 
-export { FORM_ITEM_LAYOUT, POINTS, HEADER_OPERRATIONS, CONTEXT_MENUS };
+const DEVICE_MAP = {
+  'iPhone 5/SE': {
+    width: 320,
+    height: 568,
+    baseFontSize: 32,
+  },
+  'iPhone 6/7/8': {
+    width: 375,
+    height: 667,
+    baseFontSize: 37.5,
+  },
+  'iPhone 6/7/8 Plus': {
+    width: 414,
+    height: 736,
+    baseFontSize: 41.4,
+  },
+  'iPhone X': {
+    width: 375,
+    height: 812,
+    baseFontSize: 37.5,
+  },
+  iPad: {
+    width: 768,
+    height: 1024,
+    baseFontSize: 48,
+  },
+};
+
+export {
+  FORM_ITEM_LAYOUT,
+  POINTS,
+  HEADER_OPERRATIONS,
+  CONTEXT_MENUS,
+  DEVICE_MAP,
+};

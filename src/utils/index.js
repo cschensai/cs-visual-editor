@@ -1,5 +1,6 @@
 import { useState, useCallback } from 'react';
 import { cloneDeep } from 'lodash';
+import { DEVICE_MAP } from './constant';
 
 // 获取唯一的key
 export const getOnlyKey = () => {
@@ -67,8 +68,9 @@ export const debounce = (func, wait = 500) => {
 export const px2Rem = (getCanvasData) => {
   if (getCanvasData) {
     // 处理真机预览兼容性问题 按照真机ipone6 dpr: 1 fontSize: 37.5px 进行设置处理, base-font-size
-    const baseFontSize = 37.5;
     const { style: canvasStyle, comps = [] } = cloneDeep(getCanvasData);
+    const deviceMode = canvasStyle.mode;
+    const { baseFontSize } = DEVICE_MAP[deviceMode];
     canvasStyle.width = `${canvasStyle.width / baseFontSize}rem`;
     canvasStyle.height = `${canvasStyle.height / baseFontSize}rem`;
     comps.forEach((comp) => {

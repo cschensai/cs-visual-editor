@@ -1,4 +1,4 @@
-import { useCallback, useContext, useRef } from 'react';
+import { useCallback, useContext } from 'react';
 import { message } from 'antd';
 import IconFont from '@/pages/components/Iconfont';
 import { px2Rem } from '../../utils';
@@ -8,7 +8,6 @@ import { HEADER_OPERRATIONS } from '../../utils/constant';
 import styles from './index.less';
 
 function Header(props) {
-  const previewModalRef = useRef();
   const globalCanvas = useContext(CanvasContext);
 
   // 上一步
@@ -34,7 +33,6 @@ function Header(props) {
       'release',
       JSON.stringify(px2Rem(globalCanvas.getCanvasData())),
     );
-
     // 跳转预览页面
     window.open('/preview');
   }, []);

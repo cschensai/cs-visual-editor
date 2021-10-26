@@ -59,6 +59,38 @@
         ]
       }
     },
+    "fontFamily": {
+      "$id": "fontFamily",
+      "type": "array",
+      "title": "字体类型",
+      "description": "字体的类型",
+      "additionalItems": true,
+      "enums": [
+        "none",
+        "MengQuGuoDong",
+        "NotoSerifSC",
+        "DaMingSong",
+        "RuiYiHei",
+        "FangFangXianFeng",
+        "HaiTangShouShu",
+        "NingSong",
+        "YingXiongHei",
+        "XiQueGuDian",
+        "XiQueYanShu",
+        "XiQueZhaoPai"
+      ],
+      "items": {
+        "$id": "items",
+        "anyOf": [
+          {
+            "$id": "itemAny",
+            "type": "string",
+            "title": "The first anyOf schema",
+            "description": "An explanation about the purpose of this instance."
+          }
+        ]
+      }
+    },
     "backgroundColor": {
       "$id": "backgroundColor",
       "type": "color",
@@ -124,6 +156,34 @@
         "groove",
         "hidden",
         "solid"
+      ],
+      "additionalItems": true,
+      "items": {
+        "$id": "items",
+        "anyOf": [
+          {
+            "$id": "itemAny",
+            "type": "string",
+            "title": "The first anyOf schema",
+            "description": "An explanation about the purpose of this instance."
+          }
+        ]
+      }
+    },
+    "animationName": {
+      "$id": "animationClsName",
+      "type": "array",
+      "title": "动画名称",
+      "description": "动画名称",
+      "enums": [
+        "none",
+        "animate__bounce",
+        "animate__flash",
+        "animate__pulse",
+        "animate__rubberBand",
+        "animate__shakeX",
+        "animate__shakeY",
+        "animate__backInLeft"
       ],
       "additionalItems": true,
       "items": {

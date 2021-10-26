@@ -22,6 +22,7 @@ class Canvas {
     this.defaultCanvas = {
       // iphone6 尺寸
       style: {
+        mode: 'iPhone 6/7/8',
         width: 375,
         height: 667,
         backgroundColor: '#fff',
@@ -252,9 +253,14 @@ class Canvas {
   // 再编辑区域更新组件的style、拖拽组件更新组件的style
   updateSelectedCompStyle = (_style, frequently) => {
     const _comp = this.getSelectedComp();
+    const { animationClsName, ...restStyle } = _style;
     const comp = {
       ..._comp,
-      data: { ..._comp.data, style: { ..._comp.data.style, ..._style } },
+      data: {
+        ..._comp.data,
+        style: { ..._comp.data.style, ...restStyle },
+        animationClsName,
+      },
     };
 
     // 如果之前选中的组件和当前更新的组件一致，则不再更新
