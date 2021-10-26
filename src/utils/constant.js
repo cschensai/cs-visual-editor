@@ -123,10 +123,16 @@ const DEVICE_MAP = {
   },
 };
 
+const COMMON_FORM_ITEM_LAYOUT = {
+  labelCol: { span: 6 },
+  wrapperCol: { span: 14 },
+};
+
 export {
   FORM_ITEM_LAYOUT,
   POINTS,
   HEADER_OPERRATIONS,
   CONTEXT_MENUS,
   DEVICE_MAP,
+  COMMON_FORM_ITEM_LAYOUT,
 };

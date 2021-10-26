@@ -87,6 +87,7 @@ export default function EditorComp(props) {
       <div className={styles.title}>{desc}</div>
       {/* 表单区域 */}
       <Form
+        autoComplete="off"
         form={form}
         className={styles.formBox}
         key={onlyKey}

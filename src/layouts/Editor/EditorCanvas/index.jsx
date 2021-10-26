@@ -64,6 +64,7 @@ export default function EditorCanvas(props) {
     <div className={styles.editorCanvas}>
       <div className={styles.title}>画布属性</div>
       <Form
+        autoComplete="off"
         form={form}
         className={styles.formBox}
         {...FORM_ITEM_LAYOUT}

@@ -8,14 +8,18 @@ export default function RepleasePage(props) {
   const { pageId } = props.match.params;
   const [canvas, setCanvas] = useState({ style: {}, comps: [] });
   useEffect(async () => {
-    const res = await request({
-      url: `/get?pageId=${pageId}`,
-    });
-    const { code, data = {} } = res;
-    if (code === 0) {
-      const { title, content } = data;
-      document.title = title;
-      setCanvas(JSON.parse(content));
+    try {
+      const res = await request({
+        url: `/get?pageId=${pageId}`,
+      });
+      const { code, data = {} } = res;
+      if (code === 0) {
+        const { title, content } = data;
+        document.title = title;
+        setCanvas(JSON.parse(content));
+      }
+    } catch (error) {
+      console.log('error', error);
     }
   }, []);
   return (

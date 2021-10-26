@@ -1,13 +1,14 @@
-import { useCallback, useContext } from 'react';
+import { useCallback, useContext, useRef } from 'react';
 import { message } from 'antd';
 import IconFont from '@/pages/components/Iconfont';
+import TitleModal from './TitleModal';
 import { px2Rem } from '../../utils';
-import { request } from '../../utils/request';
 import { CanvasContext } from '../../utils/Context';
 import { HEADER_OPERRATIONS } from '../../utils/constant';
 import styles from './index.less';
 
 function Header(props) {
+  const titleModalRef = useRef();
   const globalCanvas = useContext(CanvasContext);
 
   // 上一步
@@ -40,21 +41,10 @@ function Header(props) {
   // 发布操作
   const handleRelease = useCallback(async () => {
     console.log('发布', globalCanvas.getCanvasData());
-    try {
-      const res = await request({
-        method: 'POST',
-        url: '/add',
-        data: {
-          title: '我的落地页',
-          content: JSON.stringify(px2Rem(globalCanvas.getCanvasData())),
-        },
-      });
-      if (res?.code === 0) {
-        message.success('发布成功');
-      }
-    } catch (error) {
-      console.log('error', error);
-    }
+    const getCanvasDataStr = JSON.stringify(
+      px2Rem(globalCanvas.getCanvasData()),
+    );
+    titleModalRef.current?.show(getCanvasDataStr);
   }, []);
 
   // 操作菜单
@@ -107,6 +97,7 @@ function Header(props) {
           );
         })}
       </div>
+      <TitleModal titleModalRef={titleModalRef} />
     </div>
   );
 }

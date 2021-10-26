@@ -19,4 +19,13 @@ export default defineConfig({
   fastRefresh: {},
   mfsu: {},
   webpack5: {},
+  // 设置port
+  devServer: {
+    port: 8008,
+  },
+  // 处理antd 设置中文
+  locale: {
+    default: 'zh-CN',
+    antd: true,
+  },
 });
