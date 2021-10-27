@@ -70,8 +70,11 @@ export default function Content(props) {
       if (addingComp) {
         // 拖拽进来新增的组件
         addingComp = JSON.parse(addingComp);
-        const top = e.pageY - canvasPostion.top - 15;
-        const left = e.pageX - canvasPostion.left - 40;
+        // content区域可能发生滚动，计算距离
+        const contentScrollTop = document.querySelector('#content')?.scrollTop;
+        // 30/50: 分别为左侧的组件列表项的宽高的一半
+        const top = e.pageY - canvasPostion.top - 32 + contentScrollTop;
+        const left = e.pageX - canvasPostion.left - 50;
         addingComp.data.style.top = top;
         addingComp.data.style.left = left;
         globalCanvas.addComp(addingComp);
@@ -95,7 +98,7 @@ export default function Content(props) {
 
   return (
     <div id="content" className={styles.main}>
-      <Header />
+      {/* <Header /> */}
       <div
         className={styles.canvas}
         style={{
@@ -105,6 +108,7 @@ export default function Content(props) {
         ref={canvasRef}
         id="canvas"
         onDragEnter={handleDragEnter}
+        // 借助浏览器事件onDragOver+onDrop即可圈定drop范围
         onDragOver={handleDragOver}
         onDragLeave={handleDragLeave}
         onDrop={handleDrop}

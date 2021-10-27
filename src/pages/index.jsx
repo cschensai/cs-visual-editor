@@ -1,5 +1,6 @@
 import { useLayoutEffect, useEffect } from 'react';
 import Guides from '@scena/guides';
+import Header from '../layouts/Header';
 import Comps from '../layouts/Comps';
 import Content from '../layouts/Content';
 import Editor from '../layouts/Editor';
@@ -58,9 +59,12 @@ export default function IndexPage() {
       <div className={styles.ruler_vertical} id="ruler_vertical" />
       <div id="app" className={styles.main}>
         <CanvasContext.Provider value={globalCanvas}>
-          <Comps />
-          <Content />
-          <Editor />
+          <Header />
+          <div className={styles.containerBox}>
+            <Comps />
+            <Content />
+            <Editor />
+          </div>
         </CanvasContext.Provider>
       </div>
     </div>

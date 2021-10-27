@@ -12,7 +12,7 @@ import styles from './index.less';
 
 const requireds = editorCompSchema.required;
 const { Item: FormItem } = Form;
-const { Option } = Select;
+const { Option, OptGroup } = Select;
 
 export default function EditorComp(props) {
   const { selectedComp, globalCanvas } = props;
@@ -63,9 +63,9 @@ export default function EditorComp(props) {
       if (item.type === 'array') {
         return (
           <Select style={{ width: '100%' }}>
-            {item?.enums.map((ele) => (
-              <Option key={ele}>
-                <span style={{ fontFamily: ele }}>{ele}</span>
+            {item.enums.map((ele) => (
+              <Option key={ele.value}>
+                <span style={{ fontFamily: ele.value }}>{ele.label}</span>
               </Option>
             ))}
           </Select>

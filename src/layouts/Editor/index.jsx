@@ -30,7 +30,7 @@ export default class Editor extends Component {
   render() {
     const selectedComp = this.context.getSelectedComp();
     return (
-      <div className={styles.main}>
+      <div id="editor" className={styles.main}>
         {selectedComp ? (
           <EditorComp selectedComp={selectedComp} globalCanvas={this.context} />
         ) : (

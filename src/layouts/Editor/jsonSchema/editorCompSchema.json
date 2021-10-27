@@ -46,7 +46,20 @@
       "title": "字体粗细",
       "description": "字体的粗细",
       "additionalItems": true,
-      "enums": ["normal", "bold", "lighter"],
+      "enums": [
+        {
+          "label": "normal",
+          "value": "normal"
+        },
+        {
+          "label": "bold",
+          "value": "bold"
+        },
+        {
+          "label": "lighter",
+          "value": "lighter"
+        }
+      ],
       "items": {
         "$id": "items",
         "anyOf": [
@@ -66,20 +79,62 @@
       "description": "字体的类型",
       "additionalItems": true,
       "enums": [
-        "none",
-        "MengQuGuoDong",
-        "NotoSerifSC",
-        "DaMingSong",
-        "RuiYiHei",
-        "FangFangXianFeng",
-        "HaiTangShouShu",
-        "NingSong",
-        "YingXiongHei",
-        "XiQueGuDian",
-        "XiQueYanShu",
-        "XiQueZhaoPai",
-        "XiQueJuZhen",
-        "ZhenZhuNaiCha"
+        {
+          "value": "none",
+          "label": "none"
+        },
+        {
+          "value": "MengQuGuoDong",
+          "label": "MengQuGuoDong"
+        },
+        {
+          "value": "NotoSerifSC",
+          "label": "NotoSerifSC"
+        },
+        {
+          "value": "DaMingSong",
+          "label": "DaMingSong"
+        },
+        {
+          "value": "RuiYiHei",
+          "label": "RuiYiHei"
+        },
+        {
+          "value": "FangFangXianFeng",
+          "label": "FangFangXianFeng"
+        },
+        {
+          "value": "HaiTangShouShu",
+          "label": "HaiTangShouShu"
+        },
+        {
+          "value": "NingSong",
+          "label": "NingSong"
+        },
+        {
+          "value": "YingXiongHei",
+          "label": "YingXiongHei"
+        },
+        {
+          "value": "XiQueGuDian",
+          "label": "XiQueGuDian"
+        },
+        {
+          "value": "XiQueYanShu",
+          "label": "XiQueYanShu"
+        },
+        {
+          "value": "XiQueZhaoPai",
+          "label": "XiQueZhaoPai"
+        },
+        {
+          "value": "XiQueJuZhen",
+          "label": "XiQueJuZhen"
+        },
+        {
+          "value": "ZhenZhuNaiCha",
+          "label": "ZhenZhuNaiCha"
+        }
       ],
       "items": {
         "$id": "items",
@@ -111,7 +166,20 @@
       "type": "array",
       "title": "对齐方式",
       "description": "对齐方式",
-      "enums": ["left", "center", "right"],
+      "enums": [
+        {
+          "value": "left",
+          "label": "left"
+        },
+        {
+          "value": "center",
+          "label": "center"
+        },
+        {
+          "value": "right",
+          "label": "right"
+        }
+      ],
       "additionalItems": true,
       "items": {
         "$id": "items",
@@ -151,13 +219,34 @@
       "title": "边框样式",
       "description": "边框样式",
       "enums": [
-        "none",
-        "dashed",
-        "dotted",
-        "double",
-        "groove",
-        "hidden",
-        "solid"
+        {
+          "value": "none",
+          "label": "none"
+        },
+        {
+          "value": "dashed",
+          "label": "dashed"
+        },
+        {
+          "value": "dotted",
+          "label": "dotted"
+        },
+        {
+          "value": "double",
+          "label": "double"
+        },
+        {
+          "value": "groove",
+          "label": "groove"
+        },
+        {
+          "value": "hidden",
+          "label": "hidden"
+        },
+        {
+          "value": "solid",
+          "label": "solid"
+        }
       ],
       "additionalItems": true,
       "items": {
@@ -178,14 +267,90 @@
       "title": "动画名称",
       "description": "动画名称",
       "enums": [
-        "none",
-        "animate__bounce",
-        "animate__flash",
-        "animate__pulse",
-        "animate__rubberBand",
-        "animate__shakeX",
-        "animate__shakeY",
-        "animate__backInLeft"
+        {
+          "label": "none",
+          "value": "none"
+        },
+        {
+          "label": "bounce",
+          "value": "animate__bounce"
+        },
+        {
+          "label": "flash",
+          "value": "animate__flash"
+        },
+        {
+          "label": "pulse",
+          "value": "animate__pulse"
+        },
+        {
+          "label": "rubberBand",
+          "value": "animate__rubberBand"
+        },
+        {
+          "label": "shakeX",
+          "value": "animate__shakeX"
+        },
+        {
+          "label": "shakeY",
+          "value": "animate__shakeY"
+        },
+        {
+          "label": "headShake",
+          "value": "animate__headShake"
+        },
+        {
+          "label": "swing",
+          "value": "animate__swing"
+        },
+        {
+          "label": "tada",
+          "value": "animate__tada"
+        },
+        {
+          "label": "wobble",
+          "value": "animate__wobble"
+        },
+        {
+          "label": "jello",
+          "value": "animate__jello"
+        },
+        {
+          "label": "heartBeat",
+          "value": "animate__heartBeat"
+        },
+        {
+          "label": "backInDown",
+          "value": "animate__backInDown"
+        },
+        {
+          "label": "backInLeft",
+          "value": "animate__backInLeft"
+        },
+        {
+          "label": "backInRight",
+          "value": "animate__backInRight"
+        },
+        {
+          "label": "backInUp",
+          "value": "animate__backInUp"
+        },
+        {
+          "label": "backOutDown",
+          "value": "animate__backOutDown"
+        },
+        {
+          "label": "backOutLeft",
+          "value": "animate__backOutLeft"
+        },
+        {
+          "label": "backOutRight",
+          "value": "animate__backOutRight"
+        },
+        {
+          "label": "backOutUp",
+          "value": "animate__backOutUp"
+        }
       ],
       "additionalItems": true,
       "items": {

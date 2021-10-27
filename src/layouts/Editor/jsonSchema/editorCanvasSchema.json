@@ -20,11 +20,26 @@
       "title": "开发模式",
       "description": "开发的设备模式",
       "enums": [
-        "iPhone 5/SE",
-        "iPhone 6/7/8",
-        "iPhone 6/7/8 Plus",
-        "iPhone X",
-        "iPad"
+        {
+          "label": "iPhone 5/SE",
+          "value": "iPhone 5/SE"
+        },
+        {
+          "label": "iPhone 6/7/8",
+          "value": "iPhone 6/7/8"
+        },
+        {
+          "label": "iPhone 6/7/8 Plus",
+          "value": "iPhone 6/7/8 Plus"
+        },
+        {
+          "label": "iPhone X",
+          "value": "iPhone X"
+        },
+        {
+          "label": "iPad",
+          "value": "iPad"
+        }
       ],
       "items": {
         "$id": "items",

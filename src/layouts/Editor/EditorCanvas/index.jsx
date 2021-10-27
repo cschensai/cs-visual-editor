@@ -36,7 +36,7 @@ export default function EditorCanvas(props) {
       return (
         <Select style={{ width: '100%' }}>
           {item?.enums.map((ele) => (
-            <Option key={ele}>{ele}</Option>
+            <Option key={ele.value}>{ele.label}</Option>
           ))}
         </Select>
       );

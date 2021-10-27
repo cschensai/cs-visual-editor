@@ -88,7 +88,7 @@ export default (props) => {
   const Comp = map_comp[data.type];
   return (
     <Suspense fallback={<span>loading...</span>}>
-      <Comp {...data} />;
+      <Comp {...data} />
     </Suspense>
   );
 };
